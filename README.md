@@ -307,8 +307,7 @@ Berikut daftar properti penting yang bisa kamu atur:
 Baileys pakai `EventEmitter` buat dengerin semua interaksi WhatsApp secara real-time 🧠  
 Event-nya sudah diketik sempurna (TypeScript friendly), jadi dukungan Intellisense-nya mantap banget kalau pakai VS Code ✨
 
-> ⚠️ **Daftar lengkap event bisa dilihat di sini:**  
-> [https://baileys.whiskeyconnets.io/types/BaileysEventMap.html](https://baileys.whiskeyconnets.io/types/BaileysEventMap.html)
+> ⚠️ [Daftar lengkap event bisa dilihat di sini](https://baileys.whiskeyconnets.io/types/BaileysEventMap.html)
 
 ### 📥 Contoh: Menerima Pesan Masuk
 
