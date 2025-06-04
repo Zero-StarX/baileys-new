@@ -16,6 +16,7 @@ const proto = {
 ...require('./ServerSync/ServerSync').ServerSync, 
 ...require('./SignalLocalStorageProtocol/SignalLocalStorageProtocol').SignalLocalStorageProtocol,
 ...require('./SignalWhisperTextProtocol/SignalWhisperTextProtocol').SignalWhisperTextProtocol,
+...require('./StatusAttributions/StatusAttributions').StatusAttributions, 
 ...require('./SyncAction/SyncAction').SyncAction,
 ...require('./UserPassword/UserPassword').UserPassword,
 ...require('./VnameCert/VnameCert').VnameCert,

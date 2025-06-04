@@ -37,25 +37,57 @@ this[keys[i]] = properties[keys[i]];
 }
 /**
 * SenderKeyMessage id.
-* @member {number} id
+* @member {number|null|undefined} id
 * @memberof groupproto.SenderKeyMessage
 * @instance
 */
-SenderKeyMessage.prototype.id = 0;
+SenderKeyMessage.prototype.id = null;
 /**
 * SenderKeyMessage iteration.
-* @member {number} iteration
+* @member {number|number|null|undefined} iteration
 * @memberof groupproto.SenderKeyMessage
 * @instance
 */
-SenderKeyMessage.prototype.iteration = 0;
+SenderKeyMessage.prototype.iteration = null;
 /**
 * SenderKeyMessage ciphertext.
-* @member {Uint8Array} ciphertext
+* @member {Uint8Array|null|undefined} ciphertext
 * @memberof groupproto.SenderKeyMessage
 * @instance
 */
-SenderKeyMessage.prototype.ciphertext = $util.newBuffer([]);
+SenderKeyMessage.prototype.ciphertext = null;
+// OneOf field names bound to virtual getters and setters
+var $oneOfFields;
+/**
+* SenderKeyMessage _id.
+* @member {"id"|undefined} _id
+* @memberof SenderKeyMessage
+* @instance
+*/
+Object.defineProperty(SenderKeyMessage.prototype, "_id", {
+get: $util.oneOfGetter($oneOfFields = ["id"]),
+set: $util.oneOfSetter($oneOfFields)
+});
+/**
+* SenderKeyMessage _iteration.
+* @member {"iteration"|undefined} _iteration
+* @memberof SenderKeyMessage
+* @instance
+*/
+Object.defineProperty(SenderKeyMessage.prototype, "_iteration", {
+get: $util.oneOfGetter($oneOfFields = ["iteration"]),
+set: $util.oneOfSetter($oneOfFields)
+});
+/**
+* SenderKeyMessage _ciphertext.
+* @member {"ciphertext"|undefined} _ciphertext
+* @memberof SenderKeyMessage
+* @instance
+*/
+Object.defineProperty(SenderKeyMessage.prototype, "_ciphertext", {
+get: $util.oneOfGetter($oneOfFields = ["ciphertext"]),
+set: $util.oneOfSetter($oneOfFields)
+});
 /**
 * Creates a new SenderKeyMessage instance using the specified properties.
 * @function create
@@ -159,15 +191,22 @@ return this.decode(reader, reader.uint32());
 SenderKeyMessage.verify = function verify(message) {
 if (typeof message !== "object" || message === null)
 return "object expected";
-if (message.id != null && message.hasOwnProperty("id"))
+var properties = {};
+if (message.id != null && message.hasOwnProperty("id")) {
+properties._id = 1;
 if (!$util.isInteger(message.id))
 return "id: integer expected";
-if (message.iteration != null && message.hasOwnProperty("iteration"))
+}
+if (message.iteration != null && message.hasOwnProperty("iteration")) {
+properties._iteration = 1;
 if (!$util.isInteger(message.iteration))
 return "iteration: integer expected";
-if (message.ciphertext != null && message.hasOwnProperty("ciphertext"))
+}
+if (message.ciphertext != null && message.hasOwnProperty("ciphertext")) {
+properties._ciphertext = 1;
 if (!(message.ciphertext && typeof message.ciphertext.length === "number" || $util.isString(message.ciphertext)))
 return "ciphertext: buffer expected";
+}
 return null;
 };
 /**
@@ -206,23 +245,21 @@ SenderKeyMessage.toObject = function toObject(message, options) {
 if (!options)
 options = {};
 var object = {};
-if (options.defaults) {
-object.id = 0;
-object.iteration = 0;
-if (options.bytes === String)
-object.ciphertext = "";
-else {
-object.ciphertext = [];
-if (options.bytes !== Array)
-object.ciphertext = $util.newBuffer(object.ciphertext);
-}
-}
-if (message.id != null && message.hasOwnProperty("id"))
+if (message.id != null && message.hasOwnProperty("id")) {
 object.id = message.id;
-if (message.iteration != null && message.hasOwnProperty("iteration"))
+if (options.oneofs)
+object._id = "id";
+}
+if (message.iteration != null && message.hasOwnProperty("iteration")) {
 object.iteration = message.iteration;
-if (message.ciphertext != null && message.hasOwnProperty("ciphertext"))
+if (options.oneofs)
+object._iteration = "iteration";
+}
+if (message.ciphertext != null && message.hasOwnProperty("ciphertext")) {
 object.ciphertext = options.bytes === String ? $util.base64.encode(message.ciphertext, 0, message.ciphertext.length) : options.bytes === Array ? Array.prototype.slice.call(message.ciphertext) : message.ciphertext;
+if (options.oneofs)
+object._ciphertext = "ciphertext";
+}
 return object;
 };
 /**
@@ -263,32 +300,74 @@ this[keys[i]] = properties[keys[i]];
 }
 /**
 * SenderKeyDistributionMessage id.
-* @member {number} id
+* @member {number|null|undefined} id
 * @memberof groupproto.SenderKeyDistributionMessage
 * @instance
 */
-SenderKeyDistributionMessage.prototype.id = 0;
+SenderKeyDistributionMessage.prototype.id = null;
 /**
 * SenderKeyDistributionMessage iteration.
-* @member {number} iteration
+* @member {number|null|undefined} iteration
 * @memberof groupproto.SenderKeyDistributionMessage
 * @instance
 */
-SenderKeyDistributionMessage.prototype.iteration = 0;
+SenderKeyDistributionMessage.prototype.iteration = null;
 /**
 * SenderKeyDistributionMessage chainKey.
-* @member {Uint8Array} chainKey
+* @member {Uint8Array|null|undefined} chainKey
 * @memberof groupproto.SenderKeyDistributionMessage
 * @instance
 */
-SenderKeyDistributionMessage.prototype.chainKey = $util.newBuffer([]);
+SenderKeyDistributionMessage.prototype.chainKey = null;
 /**
 * SenderKeyDistributionMessage signingKey.
-* @member {Uint8Array} signingKey
+* @member {Uint8Array|null|undefined} signingKey
 * @memberof groupproto.SenderKeyDistributionMessage
 * @instance
 */
-SenderKeyDistributionMessage.prototype.signingKey = $util.newBuffer([]);
+SenderKeyDistributionMessage.prototype.signingKey = null;
+// OneOf field names bound to virtual getters and setters
+var $oneOfFields;
+/**
+* SenderKeyDistributionMessage _id.
+* @member {"id"|undefined} _id
+* @memberof SenderKeyDistributionMessage
+* @instance
+*/
+Object.defineProperty(SenderKeyDistributionMessage.prototype, "_id", {
+get: $util.oneOfGetter($oneOfFields = ["id"]),
+set: $util.oneOfSetter($oneOfFields)
+});
+/**
+* SenderKeyDistributionMessage _iteration.
+* @member {"iteration"|undefined} _iteration
+* @memberof SenderKeyDistributionMessage
+* @instance
+*/
+Object.defineProperty(SenderKeyDistributionMessage.prototype, "_iteration", {
+get: $util.oneOfGetter($oneOfFields = ["iteration"]),
+set: $util.oneOfSetter($oneOfFields)
+});
+/**
+* SenderKeyDistributionMessage _chainKey.
+* @member {"chainKey"|undefined} _chainKey
+* @memberof SenderKeyDistributionMessage
+* @instance
+*/
+Object.defineProperty(SenderKeyDistributionMessage.prototype, "_chainKey", {
+get: $util.oneOfGetter($oneOfFields = ["chainKey"]),
+set: $util.oneOfSetter($oneOfFields)
+});
+/**
+* SenderKeyDistributionMessage _signingKey.
+* @member {"signingKey"|undefined} _signingKey
+* @memberof SenderKeyDistributionMessage
+* @instance
+*/
+Object.defineProperty(SenderKeyDistributionMessage.prototype, "_signingKey", {
+get: $util.oneOfGetter($oneOfFields = ["signingKey"]),
+set: $util.oneOfSetter($oneOfFields)
+});
 /**
 * Creates a new SenderKeyDistributionMessage instance using the specified properties.
 * @function create
@@ -397,18 +476,27 @@ return this.decode(reader, reader.uint32());
 SenderKeyDistributionMessage.verify = function verify(message) {
 if (typeof message !== "object" || message === null)
 return "object expected";
-if (message.id != null && message.hasOwnProperty("id"))
+var properties = {};
+if (message.id != null && message.hasOwnProperty("id")) {
+properties._id = 1;
 if (!$util.isInteger(message.id))
 return "id: integer expected";
-if (message.iteration != null && message.hasOwnProperty("iteration"))
+}
+if (message.iteration != null && message.hasOwnProperty("iteration")) {
+properties._iteration = 1;
 if (!$util.isInteger(message.iteration))
 return "iteration: integer expected";
-if (message.chainKey != null && message.hasOwnProperty("chainKey"))
+}
+if (message.chainKey != null && message.hasOwnProperty("chainKey")) {
+properties._chainKey = 1;
 if (!(message.chainKey && typeof message.chainKey.length === "number" || $util.isString(message.chainKey)))
 return "chainKey: buffer expected";
-if (message.signingKey != null && message.hasOwnProperty("signingKey"))
+}
+if (message.signingKey != null && message.hasOwnProperty("signingKey")) {
+properties._signingKey = 1;
 if (!(message.signingKey && typeof message.signingKey.length === "number" || $util.isString(message.signingKey)))
 return "signingKey: buffer expected";
+}
 return null;
 };
 /**
@@ -452,32 +540,26 @@ SenderKeyDistributionMessage.toObject = function toObject(message, options) {
 if (!options)
 options = {};
 var object = {};
-if (options.defaults) {
-object.id = 0;
-object.iteration = 0;
-if (options.bytes === String)
-object.chainKey = "";
-else {
-object.chainKey = [];
-if (options.bytes !== Array)
-object.chainKey = $util.newBuffer(object.chainKey);
-}
-if (options.bytes === String)
-object.signingKey = "";
-else {
-object.signingKey = [];
-if (options.bytes !== Array)
-object.signingKey = $util.newBuffer(object.signingKey);
-}
-}
-if (message.id != null && message.hasOwnProperty("id"))
+if (message.id != null && message.hasOwnProperty("id")) {
 object.id = message.id;
-if (message.iteration != null && message.hasOwnProperty("iteration"))
+if (options.oneofs)
+object._id = "id";
+}
+if (message.iteration != null && message.hasOwnProperty("iteration")) {
 object.iteration = message.iteration;
-if (message.chainKey != null && message.hasOwnProperty("chainKey"))
+if (options.oneofs)
+object._iteration = "iteration";
+}
+if (message.chainKey != null && message.hasOwnProperty("chainKey")) {
 object.chainKey = options.bytes === String ? $util.base64.encode(message.chainKey, 0, message.chainKey.length) : options.bytes === Array ? Array.prototype.slice.call(message.chainKey) : message.chainKey;
-if (message.signingKey != null && message.hasOwnProperty("signingKey"))
+if (options.oneofs)
+object._chainKey = "chainKey";
+}
+if (message.signingKey != null && message.hasOwnProperty("signingKey")) {
 object.signingKey = options.bytes === String ? $util.base64.encode(message.signingKey, 0, message.signingKey.length) : options.bytes === Array ? Array.prototype.slice.call(message.signingKey) : message.signingKey;
+if (options.oneofs)
+object._signingKey = "signingKey";
+}
 return object;
 };
 /**
@@ -516,18 +598,40 @@ this[keys[i]] = properties[keys[i]];
 }
 /**
 * SenderChainKey iteration.
-* @member {number} iteration
+* @member {number|null|undefined} iteration
 * @memberof groupproto.SenderChainKey
 * @instance
 */
-SenderChainKey.prototype.iteration = 0;
+SenderChainKey.prototype.iteration = null;
 /**
 * SenderChainKey seed.
-* @member {Uint8Array} seed
+* @member {Uint8Array|null|undefined} seed
 * @memberof groupproto.SenderChainKey
 * @instance
 */
-SenderChainKey.prototype.seed = $util.newBuffer([]);
+SenderChainKey.prototype.seed = null;
+// OneOf field names bound to virtual getters and setters
+var $oneOfFields;
+/**
+* SenderChainKey _iteration.
+* @member {"iteration"|undefined} _iteration
+* @memberof SenderChainKey
+* @instance
+*/
+Object.defineProperty(SenderChainKey.prototype, "_iteration", {
+get: $util.oneOfGetter($oneOfFields = ["iteration"]),
+set: $util.oneOfSetter($oneOfFields)
+});
+/**
+* SenderChainKey _seed.
+* @member {"seed"|undefined} _seed
+* @memberof SenderChainKey
+* @instance
+*/
+Object.defineProperty(SenderChainKey.prototype, "_seed", {
+get: $util.oneOfGetter($oneOfFields = ["seed"]),
+set: $util.oneOfSetter($oneOfFields)
+});
 /**
 * Creates a new SenderChainKey instance using the specified properties.
 * @function create
@@ -626,12 +730,17 @@ return this.decode(reader, reader.uint32());
 SenderChainKey.verify = function verify(message) {
 if (typeof message !== "object" || message === null)
 return "object expected";
-if (message.iteration != null && message.hasOwnProperty("iteration"))
+var properties = {};
+if (message.iteration != null && message.hasOwnProperty("iteration")) {
+properties._iteration = 1;
 if (!$util.isInteger(message.iteration))
 return "iteration: integer expected";
-if (message.seed != null && message.hasOwnProperty("seed"))
+}
+if (message.seed != null && message.hasOwnProperty("seed")) {
+properties._seed = 1;
 if (!(message.seed && typeof message.seed.length === "number" || $util.isString(message.seed)))
 return "seed: buffer expected";
+}
 return null;
 };
 /**
@@ -668,20 +777,16 @@ SenderChainKey.toObject = function toObject(message, options) {
 if (!options)
 options = {};
 var object = {};
-if (options.defaults) {
-object.iteration = 0;
-if (options.bytes === String)
-object.seed = "";
-else {
-object.seed = [];
-if (options.bytes !== Array)
-object.seed = $util.newBuffer(object.seed);
-}
-}
-if (message.iteration != null && message.hasOwnProperty("iteration"))
+if (message.iteration != null && message.hasOwnProperty("iteration")) {
 object.iteration = message.iteration;
-if (message.seed != null && message.hasOwnProperty("seed"))
+if (options.oneofs)
+object._iteration = "iteration";
+}
+if (message.seed != null && message.hasOwnProperty("seed")) {
 object.seed = options.bytes === String ? $util.base64.encode(message.seed, 0, message.seed.length) : options.bytes === Array ? Array.prototype.slice.call(message.seed) : message.seed;
+if (options.oneofs)
+object._seed = "seed";
+}
 return object;
 };
 /**
@@ -720,18 +825,40 @@ this[keys[i]] = properties[keys[i]];
 }
 /**
 * SenderMessageKey iteration.
-* @member {number} iteration
+* @member {number|null|undefined} iteration
 * @memberof groupproto.SenderMessageKey
 * @instance
 */
-SenderMessageKey.prototype.iteration = 0;
+SenderMessageKey.prototype.iteration = null;
 /**
 * SenderMessageKey seed.
-* @member {Uint8Array} seed
+* @member {Uint8Array|null|undefined} seed
 * @memberof groupproto.SenderMessageKey
 * @instance
 */
-SenderMessageKey.prototype.seed = $util.newBuffer([]);
+SenderMessageKey.prototype.seed = null;
+// OneOf field names bound to virtual getters and setters
+var $oneOfFields;
+/**
+* SenderMessageKey _iteration.
+* @member {"iteration"|undefined} _iteration
+* @memberof SenderMessageKey
+* @instance
+*/
+Object.defineProperty(SenderMessageKey.prototype, "_iteration", {
+get: $util.oneOfGetter($oneOfFields = ["iteration"]),
+set: $util.oneOfSetter($oneOfFields)
+});
+/**
+* SenderMessageKey _seed.
+* @member {"seed"|undefined} _seed
+* @memberof SenderMessageKey
+* @instance
+*/
+Object.defineProperty(SenderMessageKey.prototype, "_seed", {
+get: $util.oneOfGetter($oneOfFields = ["seed"]),
+set: $util.oneOfSetter($oneOfFields)
+});
 /**
 * Creates a new SenderMessageKey instance using the specified properties.
 * @function create
@@ -830,12 +957,17 @@ return this.decode(reader, reader.uint32());
 SenderMessageKey.verify = function verify(message) {
 if (typeof message !== "object" || message === null)
 return "object expected";
-if (message.iteration != null && message.hasOwnProperty("iteration"))
+var properties = {};
+if (message.iteration != null && message.hasOwnProperty("iteration")) {
+properties._iteration = 1;
 if (!$util.isInteger(message.iteration))
 return "iteration: integer expected";
-if (message.seed != null && message.hasOwnProperty("seed"))
+}
+if (message.seed != null && message.hasOwnProperty("seed")) {
+properties._seed = 1;
 if (!(message.seed && typeof message.seed.length === "number" || $util.isString(message.seed)))
 return "seed: buffer expected";
+}
 return null;
 };
 /**
@@ -872,20 +1004,16 @@ SenderMessageKey.toObject = function toObject(message, options) {
 if (!options)
 options = {};
 var object = {};
-if (options.defaults) {
-object.iteration = 0;
-if (options.bytes === String)
-object.seed = "";
-else {
-object.seed = [];
-if (options.bytes !== Array)
-object.seed = $util.newBuffer(object.seed);
-}
-}
-if (message.iteration != null && message.hasOwnProperty("iteration"))
+if (message.iteration != null && message.hasOwnProperty("iteration")) {
 object.iteration = message.iteration;
-if (message.seed != null && message.hasOwnProperty("seed"))
+if (options.oneofs)
+object._iteration = "iteration";
+}
+if (message.seed != null && message.hasOwnProperty("seed")) {
 object.seed = options.bytes === String ? $util.base64.encode(message.seed, 0, message.seed.length) : options.bytes === Array ? Array.prototype.slice.call(message.seed) : message.seed;
+if (options.oneofs)
+object._seed = "seed";
+}
 return object;
 };
 /**
@@ -924,18 +1052,40 @@ this[keys[i]] = properties[keys[i]];
 }
 /**
 * SenderSigningKey public.
-* @member {Uint8Array} public
+* @member {Uint8Array|null|undefined} public
 * @memberof groupproto.SenderSigningKey
 * @instance
 */
-SenderSigningKey.prototype["public"] = $util.newBuffer([]);
+SenderSigningKey.prototype["public"] = null;
 /**
 * SenderSigningKey private.
-* @member {Uint8Array} private
+* @member {Uint8Array|null|undefined} private
 * @memberof groupproto.SenderSigningKey
 * @instance
 */
-SenderSigningKey.prototype["private"] = $util.newBuffer([]);
+SenderSigningKey.prototype["private"] = null;
+// OneOf field names bound to virtual getters and setters
+var $oneOfFields;
+/**
+* SenderSigningKey _public.
+* @member {"public"|undefined} _public
+* @memberof SenderSigningKey
+* @instance
+*/
+Object.defineProperty(SenderSigningKey.prototype, "_public", {
+get: $util.oneOfGetter($oneOfFields = ["public"]),
+set: $util.oneOfSetter($oneOfFields)
+});
+/**
+* SenderSigningKey _private.
+* @member {"private"|undefined} _private
+* @memberof SenderSigningKey
+* @instance
+*/
+Object.defineProperty(SenderSigningKey.prototype, "_private", {
+get: $util.oneOfGetter($oneOfFields = ["private"]),
+set: $util.oneOfSetter($oneOfFields)
+});
 /**
 * Creates a new SenderSigningKey instance using the specified properties.
 * @function create
@@ -1034,12 +1184,17 @@ return this.decode(reader, reader.uint32());
 SenderSigningKey.verify = function verify(message) {
 if (typeof message !== "object" || message === null)
 return "object expected";
-if (message["public"] != null && message.hasOwnProperty("public"))
+var properties = {};
+if (message["public"] != null && message.hasOwnProperty("public")) {
+properties._public = 1;
 if (!(message["public"] && typeof message["public"].length === "number" || $util.isString(message["public"])))
 return "public: buffer expected";
-if (message["private"] != null && message.hasOwnProperty("private"))
+}
+if (message["private"] != null && message.hasOwnProperty("private")) {
+properties._private = 1;
 if (!(message["private"] && typeof message["private"].length === "number" || $util.isString(message["private"])))
 return "private: buffer expected";
+}
 return null;
 };
 /**
@@ -1079,26 +1234,16 @@ SenderSigningKey.toObject = function toObject(message, options) {
 if (!options)
 options = {};
 var object = {};
-if (options.defaults) {
-if (options.bytes === String)
-object["public"] = "";
-else {
-object["public"] = [];
-if (options.bytes !== Array)
-object["public"] = $util.newBuffer(object["public"]);
-}
-if (options.bytes === String)
-object["private"] = "";
-else {
-object["private"] = [];
-if (options.bytes !== Array)
-object["private"] = $util.newBuffer(object["private"]);
-}
-}
-if (message["public"] != null && message.hasOwnProperty("public"))
+if (message["public"] != null && message.hasOwnProperty("public")) {
 object["public"] = options.bytes === String ? $util.base64.encode(message["public"], 0, message["public"].length) : options.bytes === Array ? Array.prototype.slice.call(message["public"]) : message["public"];
-if (message["private"] != null && message.hasOwnProperty("private"))
+if (options.oneofs)
+object._public = "public";
+}
+if (message["private"] != null && message.hasOwnProperty("private")) {
 object["private"] = options.bytes === String ? $util.base64.encode(message["private"], 0, message["private"].length) : options.bytes === Array ? Array.prototype.slice.call(message["private"]) : message["private"];
+if (options.oneofs)
+object._private = "private";
+}
 return object;
 };
 /**
@@ -1140,11 +1285,11 @@ this[keys[i]] = properties[keys[i]];
 }
 /**
 * SenderKeyStateStructure senderKeyId.
-* @member {number} senderKeyId
+* @member {number|null|undefined} senderKeyId
 * @memberof groupproto.SenderKeyStateStructure
 * @instance
 */
-SenderKeyStateStructure.prototype.senderKeyId = 0;
+SenderKeyStateStructure.prototype.senderKeyId = null;
 /**
 * SenderKeyStateStructure senderChainKey.
 * @member {groupproto.ISenderChainKey|null|undefined} senderChainKey
@@ -1166,6 +1311,38 @@ SenderKeyStateStructure.prototype.senderSigningKey = null;
 * @instance
 */
 SenderKeyStateStructure.prototype.senderMessageKeys = $util.emptyArray;
+// OneOf field names bound to virtual getters and setters
+var $oneOfFields;
+/**
+* SenderKeyStateStructure _senderKeyId.
+* @member {"senderKeyId"|undefined} _senderKeyId
+* @memberof SenderKeyStateStructure
+* @instance
+*/
+Object.defineProperty(SenderKeyStateStructure.prototype, "_senderKeyId", {
+get: $util.oneOfGetter($oneOfFields = ["senderKeyId"]),
+set: $util.oneOfSetter($oneOfFields)
+});
+/**
+* SenderKeyStateStructure _senderChainKey.
+* @member {"senderChainKey"|undefined} _senderChainKey
+* @memberof SenderKeyStateStructure
+* @instance
+*/
+Object.defineProperty(SenderKeyStateStructure.prototype, "_senderChainKey", {
+get: $util.oneOfGetter($oneOfFields = ["senderChainKey"]),
+set: $util.oneOfSetter($oneOfFields)
+});
+/**
+* SenderKeyStateStructure _senderSigningKey.
+* @member {"senderSigningKey"|undefined} _senderSigningKey
+* @memberof SenderKeyStateStructure
+* @instance
+*/
+Object.defineProperty(SenderKeyStateStructure.prototype, "_senderSigningKey", {
+get: $util.oneOfGetter($oneOfFields = ["senderSigningKey"]),
+set: $util.oneOfSetter($oneOfFields)
+});
 /**
 * Creates a new SenderKeyStateStructure instance using the specified properties.
 * @function create
@@ -1277,18 +1454,27 @@ return this.decode(reader, reader.uint32());
 SenderKeyStateStructure.verify = function verify(message) {
 if (typeof message !== "object" || message === null)
 return "object expected";
-if (message.senderKeyId != null && message.hasOwnProperty("senderKeyId"))
+var properties = {};
+if (message.senderKeyId != null && message.hasOwnProperty("senderKeyId")) {
+properties._senderKeyId = 1;
 if (!$util.isInteger(message.senderKeyId))
 return "senderKeyId: integer expected";
+}
 if (message.senderChainKey != null && message.hasOwnProperty("senderChainKey")) {
+properties_.senderChainKey = 1;
+{
 var error = $root.groupproto.SenderChainKey.verify(message.senderChainKey);
 if (error)
 return "senderChainKey." + error;
 }
+}
 if (message.senderSigningKey != null && message.hasOwnProperty("senderSigningKey")) {
+properties._senderSigningKey = 1;
+{
 var error = $root.groupproto.SenderSigningKey.verify(message.senderSigningKey);
 if (error)
 return "senderSigningKey." + error;
+}
 }
 if (message.senderMessageKeys != null && message.hasOwnProperty("senderMessageKeys")) {
 if (!Array.isArray(message.senderMessageKeys))
@@ -1352,17 +1538,21 @@ options = {};
 var object = {};
 if (options.arrays || options.defaults)
 object.senderMessageKeys = [];
-if (options.defaults) {
-object.senderKeyId = 0;
-object.senderChainKey = null;
-object.senderSigningKey = null;
-}
-if (message.senderKeyId != null && message.hasOwnProperty("senderKeyId"))
+if (message.senderKeyId != null && message.hasOwnProperty("senderKeyId")) {
 object.senderKeyId = message.senderKeyId;
-if (message.senderChainKey != null && message.hasOwnProperty("senderChainKey"))
+if (options.oneofs)
+object._senderKeyId = "senderKeyId";
+}
+if (message.senderChainKey != null && message.hasOwnProperty("senderChainKey")) {
 object.senderChainKey = $root.groupproto.SenderChainKey.toObject(message.senderChainKey, options);
-if (message.senderSigningKey != null && message.hasOwnProperty("senderSigningKey"))
+if (options.oneofs)
+object._senderChainKey = "senderChainKey";
+}
+if (message.senderSigningKey != null && message.hasOwnProperty("senderSigningKey")) {
 object.senderSigningKey = $root.groupproto.SenderSigningKey.toObject(message.senderSigningKey, options);
+if (options.oneofs)
+object._senderSigningKey = "senderSigningKey";
+}
 if (message.senderMessageKeys && message.senderMessageKeys.length) {
 object.senderMessageKeys = [];
 for (var j = 0; j < message.senderMessageKeys.length; ++j)

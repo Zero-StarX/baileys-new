@@ -2,7 +2,7 @@
 
 <div align='center'>
 
-![WhatsApp API](https://i.supa.codes/kyWCSZ)
+![WhatsApp API](https://i.supa.codes/6EWphC)
 
 <p align="center">
   <!-- Node.js version -->
@@ -93,16 +93,16 @@ Proyek ini secara eksplisit ditujukan untuk lingkungan modern dan tidak mendukun
 [꒰⚘꒱ Admin Contact ꒱⟡](https://linkbio.co/naruyaizumi)
 
 
-## Menghubungkan Akun
+## 🔗 Menghubungkan Akun
 
 Baileys mendukung koneksi ke WhatsApp melalui API multi-perangkat.  
 Kamu bisa menghubungkan akun dengan dua metode utama: **Kode QR** atau **Kode Pairing**.
 
-### Menghubungkan dengan **Kode QR** (ESM)
+### 📷 Menghubungkan dengan **Kode QR** (ESM)
 
-> [!TIP]  
+> 💡 *Tips:*  
 > Kamu bisa mengatur nama browser yang tampil di perangkat WhatsApp dengan menggunakan konstanta `Browsers`.  
-> Lihat daftar nama browser yang tersedia di [dokumentasi](https://baileys.whiskeyconnets.io/types/BrowsersMap.html)
+> Lihat daftar nama browser yang tersedia di [📘 dokumentasi](https://baileys.whiskeyconnets.io/types/BrowsersMap.html)
 
 ```javascript
 import makeWAconnet, { Browsers } from 'naruyaizumi'
@@ -113,12 +113,12 @@ const conn = makeWAconnet({
 })
 ```
 
-Jika koneksi berhasil, kode QR akan muncul di terminal.  
-Pindai kode tersebut menggunakan aplikasi WhatsApp di ponsel kamu untuk login.
+📱 Jika koneksi berhasil, kode QR akan muncul di terminal.  
+Pindai menggunakan WhatsApp untuk login~ 🩵
 
-### Menghubungkan dengan **Kode QR** (CommonJS)
+### 📦 Menghubungkan dengan **Kode QR** (CommonJS)
 
-Jika kamu menggunakan Node.js dengan format CommonJS (`require`), gunakan contoh berikut:
+Kalau kamu pakai CommonJS (Node.js versi `require`), pakai ini ya:
 
 ```javascript
 const { default: makeWAconnet, Browsers } = require('naruyaizumi')
@@ -129,17 +129,47 @@ const conn = makeWAconnet({
 })
 ```
 
-> Pastikan file kamu **tidak menggunakan** `"type": "module"` di `package.json` agar mode CJS dapat berjalan dengan benar.
+📌 *Pastikan* file kamu **tidak menggunakan** `"type": "module"` di `package.json` agar mode CJS bisa jalan 💻
 
-### Memulai connet dengan **Kode Pairing**
+### 💫 Menghubungkan dengan **Kode Pairing** (Multi-Device)
 
-> [!IMPORTANT]  
+Mau tanpa QR? Bisa pakai *Pairing Code* juga~ 🌸  
+Cuma bisa dipakai di *WhatsApp Web* ya (bukan Android/iOS) 💻
+
+#### 🌈 ESM (ECMAScript Module)
+```javascript
+import makeWAconnet, { Browsers } from 'naruyaizumi'
+
+const conn = makeWAconnet({
+  browser: Browsers.ubuntu('Safari'),
+  usePairingCode: true,
+  phoneNumber: '628xxxxxxx'
+})
+```
+
+#### 🎀 CommonJS
+```javascript
+const { default: makeWAconnet, Browsers } = require('naruyaizumi')
+
+const conn = makeWAconnet({
+  browser: Browsers.ubuntu('Safari'),
+  usePairingCode: true,
+  phoneNumber: '628xxxxxxx'
+})
+```
+
+🪄 Pairing code akan muncul di terminal~  
+Ketik di WhatsApp Web dan kamu langsung terhubung! 🌐✨
+
+## 🛠️ Memulai connet dengan **Kode Pairing**
+
+> ⚠️ **Penting!**  
 > Pairing Code *bukan* API Mobile. Ini adalah metode untuk terhubung ke WhatsApp Web **tanpa memindai kode QR**.  
 > Metode ini hanya memungkinkan koneksi dari **satu perangkat saja**.  
-> Lihat penjelasan resmi [di sini](https://faq.whatsapp.com/1324084875126592/?cms_platform=web)
+> Lihat penjelasan resmi [📘 di sini](https://faq.whatsapp.com/1324084875126592/?cms_platform=web)
 
-Nomor telepon **tidak boleh menggunakan karakter** seperti `+`, `()` atau `-`.  
-Gunakan hanya angka dan pastikan menyertakan kode negara.
+📌 Nomor telepon **tidak boleh mengandung karakter** seperti `+`, `()`, atau `-`  
+Gunakan hanya angka murni, dan pastikan sudah menyertakan kode negara 🌐
 
 ```javascript
 import makeWAconnet from 'naruyaizumi'
@@ -158,13 +188,12 @@ if (!conn.authState.creds.registered) {
 }
 ```
 
-Setelah pairing code berhasil dibuat, masukkan kode tersebut melalui WhatsApp Web seperti biasa untuk menyelesaikan proses autentikasi.
+🪄 Setelah pairing code berhasil dibuat, masukkan kode tersebut melalui **WhatsApp Web** seperti biasa untuk menyelesaikan proses autentikasi 🖥️🩵
 
-### Menerima Riwayat Pesan Lengkap
+## 🕓 Menerima Riwayat Pesan Lengkap
 
 1. Atur opsi `syncFullHistory` ke `true`
-2. Secara default, Baileys menggunakan konfigurasi browser Chrome.  
-   Jika kamu ingin **meniru koneksi desktop** (dan menerima riwayat pesan yang lebih banyak), gunakan konfigurasi browser seperti contoh di bawah ini.
+2. WhatsApp akan mengirim lebih banyak riwayat jika kamu meniru koneksi **desktop resmi** (WhatsApp Web) dengan konfigurasi browser tertentu 👩‍💻
 
 ```javascript
 import makeWAconnet, { Browsers } from 'naruyaizumi'
@@ -177,16 +206,18 @@ const conn = makeWAconnet({
 })
 ```
 
-> [!NOTE]  
-> WhatsApp hanya mengirim riwayat pesan penuh jika koneksi yang digunakan menyerupai **perangkat desktop resmi** (WhatsApp Web).  
-> Konfigurasi browser yang tepat sangat berpengaruh pada jumlah riwayat yang dikirim.
+> 📝 *Catatan:*  
+> WhatsApp hanya mengirim riwayat pesan lengkap jika koneksi terlihat seperti **WhatsApp Web Desktop**.  
+> Pengaturan browser sangat mempengaruhi seberapa banyak pesan masa lalu yang dikirim 📦
 
-## Catatan Penting Mengenai Konfigurasi connet
+## 🧠 Catatan Penting Mengenai Konfigurasi `connet`
 
-### Caching Metadata Grup (Direkomendasikan)
+### 🗂️ Caching Metadata Grup (Direkomendasikan)
 
-- Jika kamu menggunakan Baileys untuk mengelola grup, sangat disarankan untuk mengatur opsi `cachedGroupMetadata` pada konfigurasi connet kamu.  
-- Kamu perlu mengimplementasikan sistem cache sederhana seperti contoh berikut:
+- Kalau bot kamu aktif di grup, sangat disarankan mengaktifkan `cachedGroupMetadata` ✅  
+- Ini mencegah spam permintaan metadata dan membuat bot lebih responsif 🌟
+
+Contoh implementasi cache menggunakan `node-cache`:
 
 ```javascript
 import makeWAconnet from 'naruyaizumi'
@@ -209,115 +240,77 @@ conn.ev.on('group-participants.update', async (event) => {
 })
 ```
 
-Dengan menggunakan cache ini, Kamu dapat mengurangi jumlah permintaan metadata yang berulang dan mempercepat proses interaksi bot dengan grup secara signifikan.
+🪄 Dengan cache seperti ini, kamu bisa mengurangi beban request dan mempercepat interaksi bot ke grup secara signifikan 🚀
 
-> [!NOTE]  
-> Kamu bisa mengganti `NodeCache` dengan database lain seperti Redis atau in-memory store milik framework kamu sendiri.
+> 💬 *Tips Lanjutan:*  
+> Kamu bisa ganti `NodeCache` dengan Redis, SQLite, atau in-memory DB lain sesuai arsitektur bot kamu 🧩
 
-## Konfigurasi Lengkap connet
+## ⚙️ Konfigurasi Lengkap `connetConfig`
 
-Kamu dapat mengatur koneksi Baileys dengan memberikan objek `connetConfig`.  
-Berikut adalah daftar lengkap properti yang bisa Kamu sesuaikan beserta penjelasannya:
+Baileys bisa kamu sesuaikan penuh lewat objek konfigurasi `connetConfig`.  
+Berikut daftar properti penting yang bisa kamu atur:
 
-### Struktur `connetConfig` (dengan penjelasan)
+### 🔌 Koneksi & Timeout
 
-- `waWebconnetUrl`  
-  URL Webconnet yang digunakan untuk terhubung ke WhatsApp (default: `wss://...`)
+- `waWebSocketUrl`: URL WebSocket WhatsApp Web (`wss://web.whatsapp.com/ws/chat`)
+- `connectTimeoutMs`: Batas waktu koneksi (default: `20000`)
+- `defaultQueryTimeoutMs`: Timeout default query (default: `60000`)
+- `keepAliveIntervalMs`: Interval ping koneksi (default: `30000`)
+- `qrTimeout`: Timeout QR sebelum kadaluarsa (optional)
 
-- `connectTimeoutMs`  
-  Waktu maksimal (dalam milidetik) untuk mencoba koneksi sebelum gagal.
+### 🖥️ Browser & Agent
 
-- `defaultQueryTimeoutMs`  
-  Timeout default untuk permintaan/query. Jika `undefined`, maka tidak ada timeout.
+- `browser`: Tiruan browser, misal `Browsers.ubuntu('Chrome')`
+- `version`: Versi WhatsApp Web (`fetchLatestBaileysVersion()` untuk versi terbaru)
+- `printQRInTerminal`: Tampilkan QR di terminal? (`true/false`)
+- `agent`: Proxy agent untuk koneksi custom (optional)
+- `fetchAgent`: Custom agent untuk media fetch (optional)
 
-- `keepAliveIntervalMs`  
-  Interval ping-pong antar koneksi Webconnet untuk menjaga koneksi tetap hidup.
+### 💬 Event & Logging
 
-- `agent` *(opsional)*  
-  Proxy agent jika kamu menggunakan koneksi melalui proxy.
+- `emitOwnEvents`: Emit event dari aksi sendiri? (`true/false`)
+- `logger`: Logger seperti `pino`, bisa dikustom
+- `fireInitQueries`: Kirim query inisialisasi otomatis (`true/false`)
+- `markOnlineOnConnect`: Tampilkan status online setelah connect
 
-- `logger`  
-  Logger yang digunakan, biasanya dari `pino`.
+### 💾 Media & Caching
 
-- `version`  
-  Versi WhatsApp Web yang digunakan untuk koneksi (gunakan `fetchLatestBaileysVersion()` untuk mendapatkan versi terbaru).
+- `mediaCache`: Cache media upload (optional)
+- `customUploadHosts`: Host alternatif upload media
+- `linkPreviewImageThumbnailWidth`: Ukuran thumbnail link preview
+- `generateHighQualityLinkPreview`: Upload thumbnail link preview kualitas tinggi
 
-- `browser`  
-  Konfigurasi browser yang ditiru oleh Baileys (lihat `Browsers.ubuntu()`, `Browsers.macOS()`, dll).
+### 🔐 Autentikasi & History
 
-- `fetchAgent` *(opsional)*  
-  Agent untuk permintaan upload/download media.
+- `auth`: Objek autentikasi dan state sesi WhatsApp
+- `shouldSyncHistoryMessage`: Kontrol sinkronisasi riwayat pesan
+- `syncFullHistory`: Sinkron semua pesan dari awal
+- `getMessage`: Fungsi async untuk ambil ulang pesan lokal
+- `transactionOpts`: Opsi transaksi key Signal
+- `userDevicesCache`: Cache perangkat pengguna
 
-- `printQRInTerminal`  
-  Jika `true`, maka kode QR akan dicetak di terminal.
+### 📦 Grup & Metadata
 
-- `emitOwnEvents`  
-  Jika `true`, event dari aksi sendiri (seperti mengirim pesan) juga akan dipancarkan oleh event handler.
+- `cachedGroupMetadata`: Fungsi untuk cache metadata grup
+- `msgRetryCounterMap`: Menyimpan jumlah retry kirim pesan
 
-- `mediaCache` *(opsional)*  
-  Cache media agar tidak perlu upload ulang media yang sama.
+### 🌐 HTTP & Request
 
-- `customUploadHosts`  
-  Daftar host untuk upload media secara manual.
+- `options`: Opsi tambahan untuk axios request
+- `retryRequestDelayMs`: Delay antara retry request (default: `250`)
 
-- `retryRequestDelayMs`  
-  Waktu jeda antara retry jika permintaan gagal.
+> 📝 *Tips Tante Luna:*  
+> Kamu bisa cuma pakai sebagian properti aja. Sisanya otomatis fallback ke default bawaan Baileys 😘
 
-- `qrTimeout` *(opsional)*  
-  Waktu tunggu maksimal untuk menampilkan kode QR baru.
+## 📡 Menangani Event
 
-- `auth`  
-  Objek autentikasi yang digunakan untuk menyimpan dan memuat sesi login WhatsApp.
+Baileys pakai `EventEmitter` buat dengerin semua interaksi WhatsApp secara real-time 🧠  
+Event-nya sudah diketik sempurna (TypeScript friendly), jadi dukungan Intellisense-nya mantap banget kalau pakai VS Code ✨
 
-- `shouldSyncHistoryMessage`  
-  Fungsi kontrol untuk memilih jenis riwayat pesan yang ingin disinkronisasi dari perangkat utama.
+> ⚠️ **Daftar lengkap event bisa dilihat di sini:**  
+> [https://baileys.whiskeyconnets.io/types/BaileysEventMap.html](https://baileys.whiskeyconnets.io/types/BaileysEventMap.html)
 
-- `transactionOpts`  
-  Opsi untuk manajemen transaksi penyimpanan Signal key.
-
-- `userDevicesCache` *(opsional)*  
-  Cache daftar perangkat pengguna.
-
-- `markOnlineOnConnect`  
-  Jika `true`, akun akan terlihat online setiap kali koneksi berhasil.  
-  Jika `false`, maka WhatsApp di ponsel tetap bisa menerima notifikasi.
-
-- `msgRetryCounterMap` *(opsional)*  
-  Penyimpanan jumlah percobaan retry pengiriman pesan.
-
-- `linkPreviewImageThumbnailWidth`  
-  Lebar thumbnail gambar pada link preview.
-
-- `syncFullHistory`  
-  Jika `true`, Baileys akan meminta riwayat pesan penuh (sangat disarankan untuk akun baru).
-
-- `fireInitQueries`  
-  Jika `true`, Baileys akan menjalankan kueri inisialisasi otomatis saat koneksi dimulai.
-
-- `generateHighQualityLinkPreview`  
-  Jika `true`, Baileys akan mengunggah thumbnail berkualitas tinggi untuk preview link.
-
-- `options`  
-  Opsi tambahan untuk permintaan HTTP/axios (misalnya: timeout, headers, dll).
-
-- `getMessage`  
-  Fungsi untuk mengambil ulang isi pesan dari penyimpanan lokal kamu.  
-  Digunakan saat pengiriman ulang pesan gagal atau saat dekripsi polling suara.
-
-> [!INFO]  
-> Kamu tidak perlu mengatur semua properti di atas.  
-> Cukup sesuaikan yang kamu butuhkan, sisanya akan menggunakan nilai default dari Baileys.
-
-## Menangani Event
-
-- Baileys menggunakan pola `EventEmitter` untuk menangani berbagai peristiwa (*event*).  
-Seluruh event telah diketik (typed) dengan baik, sehingga editor seperti **VS Code** akan memberikan dukungan Intellisense secara optimal.
-
-> [!IMPORTANT]  
-> **Daftar lengkap event tersedia [di sini](https://baileys.whiskeyconnets.io/types/BaileysEventMap.html)**.  
-> Sangat penting untuk memahami setiap event yang bisa digunakan.
-
-Contoh penggunaan listener untuk menangani pesan masuk:
+### 📥 Contoh: Menerima Pesan Masuk
 
 ```javascript
 import makeWAconnet from 'naruyaizumi'
@@ -329,83 +322,64 @@ conn.ev.on('messages.upsert', ({ messages }) => {
 })
 ```
 
-## Menangani Event
-
-Baileys menggunakan sistem **EventEmitter** untuk menangani interaksi WhatsApp secara real-time.  
-Semua event yang terjadi saat koneksi aktif akan dipancarkan melalui `conn.ev.on(...)`, dan kamu bisa menangkap serta meresponsnya sesuai kebutuhan bot kamu.
-
-> [!IMPORTANT]  
-> **Daftar lengkap event tersedia [di sini](https://baileys.whiskeyconnets.io/types/BaileysEventMap.html)**.  
-> Disarankan untuk memahami struktur tiap event agar integrasi kamu lebih stabil dan efisien.
-
-### Contoh: Menangani Pesan Masuk
-
-```javascript
-conn.ev.on('messages.upsert', async ({ messages, type }) => {
-  const msg = messages[0]
-  if (!msg.message) return
-  console.log('Pesan diterima:', msg.message)
-})
-```
-
 - `type` bisa bernilai `notify`, `append`, `replace`, atau `remove`.
 - Kamu biasanya hanya perlu memproses `type === 'notify'` untuk pesan baru yang masuk.
 
-### Contoh: Menangani Pembaruan Koneksi
+### 🌐 Contoh: Menangani Pembaruan Koneksi 📶
 
 ```javascript
 conn.ev.on('connection.update', ({ connection, lastDisconnect }) => {
   if (connection === 'close') {
-    console.log('Koneksi terputus.')
+    console.log('❌ Koneksi terputus.')
   } else if (connection === 'open') {
-    console.log('Terhubung ke WhatsApp!')
+    console.log('✅ Terhubung ke WhatsApp!')
   }
 })
 ```
 
-- Event ini sangat penting untuk memantau status koneksi connet.
-- Jika `connection === 'close'`, Kamu dapat mencoba reconnect otomatis.
+- ⚠️ Event ini sangat penting untuk memantau status koneksi connet.
+- 🔁 Jika `connection === 'close'`, Kamu dapat mencoba reconnect otomatis.
 
-### Contoh: Deteksi Peserta Masuk/Keluar Grup
+### 🎉 Contoh: Deteksi Peserta Masuk/Keluar Grup
 
 ```javascript
 conn.ev.on('group-participants.update', async ({ id, participants, action }) => {
   if (action === 'add') {
-    console.log('Anggota baru masuk:', participants)
+    console.log('👋 Anggota baru masuk:', participants)
   } else if (action === 'remove') {
-    console.log('Anggota keluar:', participants)
+    console.log('👣 Anggota keluar:', participants)
   }
 })
 ```
 
-- `id`: JID grup
-- `participants`: array nomor yang terlibat
-- `action`: `'add' | 'remove' | 'promote' | 'demote'`
+- 🏷️ `id`: JID grup  
+- 👥 `participants`: array nomor yang terlibat  
+- ⚙️ `action`: `'add' | 'remove' | 'promote' | 'demote'`
 
-### Contoh: Pembaruan Metadata Grup
+### 🛠️ Contoh: Pembaruan Metadata Grup
 
 ```javascript
 conn.ev.on('groups.update', async (updates) => {
   for (let group of updates) {
-    console.log('Grup diperbarui:', group)
+    console.log('📝 Grup diperbarui:', group)
   }
 })
 ```
 
-- Bisa digunakan untuk mendeteksi perubahan nama grup, gambar, deskripsi, dll.
+- 💡 Bisa digunakan untuk mendeteksi perubahan nama grup, gambar, deskripsi, dll.
 
-### Tips
+### 🌈 Tips
 
-- Event `messages.update` digunakan untuk mendeteksi status pesan seperti dibaca, diterima, atau gagal.
-- Event `messages.reaction` digunakan untuk menangkap reaksi (emoji) pada pesan kamu.
+- 📩 Event `messages.update` digunakan untuk mendeteksi status pesan seperti dibaca, diterima, atau gagal.
+- 😊 Event `messages.reaction` digunakan untuk menangkap reaksi (emoji) pada pesan kamu.
 
-> [!TIP]  
+> 💬 **TIP**  
 > Baileys tidak menyimpan cache pesan secara default.  
 > Untuk menangani event dengan akurat (seperti retry atau polling), gunakan `getMessage()` bersama `store`.
 
-Jika kamu butuh event tambahan seperti **reaction**, **presence**, atau **call offer**, tinggal tambahkan listener-nya sesuai struktur [BaileysEventMap](https://baileys.whiskeyconnets.io/types/BaileysEventMap.html).
+🔍 Jika kamu butuh event tambahan seperti **reaction**, **presence**, atau **call offer**, tinggal tambahkan listener-nya sesuai struktur [BaileysEventMap](https://baileys.whiskeyconnets.io/types/BaileysEventMap.html).
 
-## Menyimpan & Memulihkan Sesi
+## 💾 Menyimpan & Memulihkan Sesi
 
 Tentu kamu tidak ingin terus-menerus memindai QR code setiap kali ingin terkoneksi.
 
@@ -424,39 +398,40 @@ const conn = makeWAconnet({ auth: state })
 conn.ev.on('creds.update', saveCreds)
 ```
 
-> [!IMPORTANT]  
+> ⚠️ **IMPORTANT**  
 > `useMultiFileAuthState` adalah fungsi utilitas untuk menyimpan state autentikasi dalam satu folder.  
 > Fungsi ini juga dapat dijadikan dasar untuk menulis sistem autentikasi dan penyimpanan kunci pada database SQL atau NoSQL — sangat direkomendasikan untuk sistem berskala produksi.
 
-### Apa Isi Folder `auth_info_baileys`?
+## 📂 Apa Isi Folder `auth_info_baileys`?
 
 Folder tersebut akan berisi beberapa file `.json` seperti:
 
 - `creds.json` — informasi kredensial utama
 - `keys/` — berisi subfile kunci Signal: pre-keys, session, senderKey, dll.
 
-> Folder ini **jangan pernah dimodifikasi atau dihapus secara manual**.  
+> ⚠️ **Folder ini jangan pernah dimodifikasi atau dihapus secara manual.**  
 > Perlakukan seperti file token yang sangat sensitif.
 
-### Apa yang Terjadi Jika Folder Hilang?
+## ❌ Apa yang Terjadi Jika Folder Hilang?
 
 Jika folder `auth_info_baileys` dihapus:
-- Kamu **tidak bisa login ulang** tanpa memindai QR lagi
-- Semua sesi yang aktif akan invalid
-- Signal akan membuat ulang semua sesi enkripsi end-to-end
+- 🔒 Kamu **tidak bisa login ulang** tanpa memindai QR lagi
+- 🔃 Semua sesi yang aktif akan **invalid**
+- 🔐 Signal akan membuat ulang semua sesi enkripsi end-to-end
 
-Backup sangat disarankan jika kamu mengelola sesi penting.
+💡 **Backup sangat disarankan** jika kamu mengelola sesi penting.
 
-### Tips Backup & Restore
+## 💡 Tips Backup & Restore
 
-- Salin seluruh folder `auth_info_baileys` secara utuh.
-- Untuk restore, cukup salin folder kembali ke path yang sama sebelum memulai bot.
-- Gunakan `.gitignore` agar folder ini tidak ikut di-push ke GitHub:
-  ```
-  auth_info_baileys/
-  ```
+- 🗂️ Salin seluruh folder `auth_info_baileys` secara utuh.
+- 🔁 Untuk restore, cukup salin folder kembali ke path yang sama sebelum memulai bot.
+- 🛡️ Gunakan `.gitignore` agar folder ini tidak ikut di-push ke GitHub:
 
-### Menyimpan Berdasarkan ID Pengguna (Multi-Akun)
+```gitignore
+auth_info_baileys/
+```
+
+## 👥 Menyimpan Berdasarkan ID Pengguna (Multi-Akun)
 
 Jika kamu mengelola banyak sesi pengguna (multi-client), buat direktori penyimpanan berdasarkan ID pengguna:
 
@@ -464,13 +439,13 @@ Jika kamu mengelola banyak sesi pengguna (multi-client), buat direktori penyimpa
 const { state, saveCreds } = await useMultiFileAuthState(`./sessions/${userId}`)
 ```
 
-Dengan cara ini, kamu bisa memisahkan sesi tiap user tanpa saling bentrok.
+Dengan cara ini, kamu bisa memisahkan sesi tiap user tanpa saling bentrok 🔄
 
-> Rekomendasi: kombinasikan dengan database seperti MongoDB/Redis untuk mencatat mapping antara userId dan path session-nya.
+> 🎯 **Rekomendasi**: kombinasikan dengan database seperti MongoDB/Redis untuk mencatat mapping antara `userId` dan path session-nya.
 
-### Contoh untuk Memulai
+## 🚀 Contoh untuk Memulai
 
-> [!NOTE]  
+> 💡 **NOTE**  
 > Contoh ini juga sudah mencakup penyimpanan kredensial secara otomatis
 
 ```javascript
@@ -496,7 +471,7 @@ async function connectToWhatsApp () {
         connectToWhatsApp()
       }
     } else if (connection === 'open') {
-      console.log('Koneksi berhasil dibuka')
+      console.log('✅ Koneksi berhasil dibuka')
     }
   })
 
@@ -504,28 +479,29 @@ async function connectToWhatsApp () {
     for (const m of event.messages) {
       console.log(JSON.stringify(m, undefined, 2))
 
-      console.log('Membalas ke', m.key.remoteJid)
-      await conn.sendMessage(m.key.remoteJid!, { text: 'Hello World' })
+      console.log('📨 Membalas ke', m.key.remoteJid)
+      await conn.sendMessage(m.key.remoteJid!, { text: 'Hello World 🌍' })
     }
   })
 
-  // Menyimpan kredensial setiap kali diperbarui
+  // 💾 Menyimpan kredensial setiap kali diperbarui
   conn.ev.on('creds.update', saveCreds)
 }
 
 connectToWhatsApp()
 ```
 
-### Contoh Penggunaan `useSingleFileAuthState` dan `useMongoFileAuthState`
+## 🔐 Contoh Penggunaan `useSingleFileAuthState` dan `useMongoFileAuthState`
+
+### 🗂️ Autentikasi menggunakan file tunggal (Single File Auth)
 
 ```javascript
 import makeWAconnet, {
-  useSingleFileAuthState,
-  useMongoFileAuthState
+  useSingleFileAuthState
 } from 'naruyaizumi'
 
-// Autentikasi menggunakan file tunggal (Single File Auth)
 const { state, saveState } = await useSingleFileAuthState('./auth_info_baileys.json')
+
 const conn = makeWAconnet({
   auth: state,
   printQRInTerminal: true
@@ -534,15 +510,19 @@ const conn = makeWAconnet({
 conn.ev.on('creds.update', saveState)
 ```
 
+### 🍃 Autentikasi menggunakan MongoDB
+
 ```javascript
-// Autentikasi menggunakan MongoDB
+import makeWAconnet, {
+  useMongoFileAuthState
+} from 'naruyaizumi'
 import { MongoClient } from 'mongodb'
 
 const connectAuth = async () => {
   const client = new MongoClient('mongodb://localhost:27017')
   await client.connect()
 
-  console.log('Berhasil terhubung ke MongoDB')
+  console.log('✅ Berhasil terhubung ke MongoDB')
 
   const collection = client.db('naruyaizumi').collection('sessions')
   const { state, saveCreds } = await useMongoFileAuthState(collection)
@@ -558,14 +538,14 @@ const connectAuth = async () => {
 connectAuth()
 ```
 
-> [!IMPORTANT]  
+> ⚠️ **IMPORTANT**  
 > Dalam event `messages.upsert`, sangat disarankan menggunakan perulangan `for (const message of event.messages)` untuk menangani semua pesan dalam array secara individual.  
 > Hal ini mencegah pesan terlewat dan memudahkan logging/debugging.
 
-> [!TIP]  
-> Kamu bisa menggabungkan pendekatan penyimpanan sesi (`MultiFile`, `SingleFile`, atau `MongoDB`) dengan sistem login berbasis ID pengguna, sehingga mendukung banyak akun secara paralel.
+> 💡 **TIP**  
+> Kamu bisa menggabungkan pendekatan penyimpanan sesi (`MultiFile`, `SingleFile`, atau `MongoDB`) dengan sistem login berbasis ID pengguna, sehingga mendukung banyak akun secara paralel ✨
 
-### Mendekripsi Suara Polling
+## 🔊 Mendekripsi Suara Polling
 
 Secara default, suara polling di WhatsApp dienkripsi dan diproses melalui event `messages.update`.
 
@@ -603,35 +583,35 @@ conn.ev.on('messages.update', async (chatUpdate) => {
         const toCmd = pollUpdate.filter(v => v.voters.length !== 0)[0]?.name
         if (!toCmd) return
 
-        console.log('Pilihan terpilih:', toCmd)
-        // Tambahkan aksi lanjutan di sini
+        console.log('📥 Pilihan terpilih:', toCmd)
+        // ✨ Tambahkan aksi lanjutan di sini
       }
     }
   }
 })
 ```
 
-### Penjelasan
+## 📘 Penjelasan
 
-- **`store.loadMessage(jid, id)`** digunakan untuk mengambil ulang isi pesan polling (karena hasil polling hanya berisi update, bukan isi awal).
-- **`getAggregateVotesInPollMessage()`** menggabungkan seluruh `pollUpdates` dan menghasilkan daftar suara lengkap.
-- Sangat penting menggunakan `getMessage()` yang valid. Jika kamu tidak menyimpan store, dekripsi suara tidak akan berhasil.
+- 📩 **`store.loadMessage(jid, id)`** digunakan untuk mengambil ulang isi pesan polling (karena hasil polling hanya berisi update, bukan isi awal).
+- 🧠 **`getAggregateVotesInPollMessage()`** menggabungkan seluruh `pollUpdates` dan menghasilkan daftar suara lengkap.
+- 🧷 Sangat penting menggunakan `getMessage()` yang valid. Jika kamu tidak menyimpan store, dekripsi suara tidak akan berhasil.
 
-> [!TIP]  
+> 💡 **TIP:**  
 > Untuk polling publik, kamu tidak perlu key khusus.  
-> Tapi untuk polling private (atau jika polling berasal dari orang lain), pastikan kamu menyimpan pesan awalnya menggunakan store atau log pesan masuk.
+> Tapi untuk polling private (atau jika polling berasal dari orang lain), pastikan kamu menyimpan pesan awalnya menggunakan `store` atau log pesan masuk.
 
-### Ringkasan Event Saat Koneksi Pertama
+### ✨ Ringkasan Event Saat Koneksi Pertama 🛜
 
 1. Saat connet pertama kali terkoneksi, event `connection.update` akan dipicu.  
    Biasanya status koneksi akan masuk ke `'open'` atau `'close'`.
 2. Setelah itu, WhatsApp akan mengirimkan riwayat pesan (history chat) melalui event:  
-   **`messaging-history.set`**
-3. Riwayat tersebut berisi pesan-pesan dari sesi sebelumnya, termasuk polling yang belum terjawab.
+   **`messaging-history.set`** 📬
+3. Riwayat tersebut berisi pesan-pesan dari sesi sebelumnya, termasuk polling yang belum terjawab 🗳️
 
 > [!IMPORTANT]  
-> Untuk menangani polling, kamu **wajib mengatur `getMessage()`** di konfigurasi `makeWAconnet()`.  
-> Ini memastikan Baileys bisa mendekripsi hasil polling dengan benar.
+> 🧠 Untuk menangani polling, kamu **wajib mengatur `getMessage()`** di konfigurasi `makeWAconnet()` yaa~  
+> Ini memastikan Baileys bisa mendekripsi hasil polling dengan benar 💌
 
 ```javascript
 const conn = makeWAconnet({
@@ -640,96 +620,94 @@ const conn = makeWAconnet({
 })
 ```
 
-## Mengimplementasikan Data Store
+## 🧸 Mengimplementasikan Data Store
 
 Baileys tidak menyediakan sistem penyimpanan (*storage*) bawaan untuk chat, kontak, atau pesan.  
-Namun, tersedia implementasi sederhana menggunakan **in-memory store**. Store ini akan memantau pembaruan chat, pesan baru, dan perubahan lainnya agar data kamu tetap mutakhir.
+Namun, tersedia implementasi sederhana menggunakan **in-memory store** 🌼 Store ini akan memantau pembaruan chat, pesan baru, dan perubahan lainnya agar data kamu tetap mutakhir 💬
 
 > [!IMPORTANT]  
-> Sangat disarankan untuk membangun sistem penyimpanan sendiri.  
-> Menyimpan seluruh riwayat chat di RAM akan memakan memori yang besar dan tidak efisien untuk jangka panjang.
+> 🌟 Sangat disarankan untuk membangun sistem penyimpanan sendiri.  
+> 💣 Menyimpan seluruh riwayat chat di RAM akan memakan memori besar dan tidak efisien untuk jangka panjang.
 
----
-
-### Contoh Penggunaan Store
+### 🧪 Contoh Penggunaan Store
 
 ```javascript
 import makeWAconnet, { makeInMemoryStore } from 'naruyaizumi'
 
-// Store akan menyimpan data koneksi WhatsApp dalam memori
+// 🧠 Store akan menyimpan data koneksi WhatsApp dalam memori
 const store = makeInMemoryStore({})
 
-// Membaca data dari file (jika tersedia)
+// 📖 Membaca data dari file (jika tersedia)
 store.readFromFile('./baileys_store.json')
 
-// Menyimpan state ke file setiap 10 detik
+// 💾 Menyimpan state ke file setiap 10 detik
 setInterval(() => {
   store.writeToFile('./baileys_store.json')
 }, 10_000)
 
 const conn = makeWAconnet({})
 
-// Store akan mulai mendengarkan event dari connet ini
-// Jika connet diganti, store masih bisa digunakan ulang
+// 🔌 Store akan mulai mendengarkan event dari connet ini
+// ♻️ Jika connet diganti, store masih bisa digunakan ulang
 store.bind(conn.ev)
 
 conn.ev.on('chats.upsert', () => {
-  // Akses semua chat tersimpan
+  // 📥 Akses semua chat tersimpan
   console.log('Data chat diterima:', store.chats.all())
 })
 
 conn.ev.on('contacts.upsert', () => {
-  // Akses semua kontak tersimpan
+  // 📇 Akses semua kontak tersimpan
   console.log('Kontak diperbarui:', Object.values(store.contacts))
 })
 ```
 
-### Fitur Store
+### 🎀 Fitur Store
 
-- Menyimpan chat, pesan, dan kontak sementara di memori.
-- Mendukung pembacaan dan penulisan dari/ke file JSON.
-- Bisa digunakan bersama beberapa koneksi (connet) sekaligus.
-- Tersedia fungsi `loadMessages`, `loadMessage`, dan `loadMessageFromContent`.
+- 🧠 Menyimpan chat, pesan, dan kontak sementara di memori.
+- 📁 Mendukung pembacaan dan penulisan dari/ke file JSON.
+- 🔁 Bisa digunakan bersama beberapa koneksi (connet) sekaligus.
+- 💌 Tersedia fungsi `loadMessages`, `loadMessage`, dan `loadMessageFromContent`.
 
-### Kelebihan
+### ✨ Kelebihan
 
-- Cepat dan ringan untuk penggunaan kecil-menengah.
-- Ideal untuk penggunaan lokal, testing, atau bot personal.
+- ⚡ Cepat dan ringan untuk penggunaan kecil-menengah.
+- 👩‍💻 Ideal untuk penggunaan lokal, testing, atau bot personal.
 
-### Kekurangan
+### ⚠️ Kekurangan
 
-- Data hilang saat proses dihentikan jika tidak ditulis ke file.
-- Tidak cocok untuk data skala besar (ribuan pesan atau kontak).
-- Tidak mendukung query kompleks (karena berbasis object literal di RAM).
+- ❌ Data hilang saat proses dihentikan jika tidak ditulis ke file.
+- 🚫 Tidak cocok untuk data skala besar (ribuan pesan atau kontak).
+- 🔍 Tidak mendukung query kompleks (karena berbasis object literal di RAM).
 
-### Rekomendasi Produksi
+### 💡 Rekomendasi Produksi
 
 Untuk sistem besar atau multi-user:
 
-- Gunakan database seperti:
-  - MongoDB (untuk struktur fleksibel dan load besar)
-  - Redis (untuk cache cepat)
-  - PostgreSQL (untuk struktur relasional)
-- Sinkronkan event seperti `messages.upsert`, `chats.upsert`, dan `contacts.upsert` ke penyimpanan permanen.
-- Gunakan store hanya sebagai cache atau layer middleware sementara.
+- 🗃️ Gunakan database seperti:
+  - 🧬 **MongoDB** (untuk struktur fleksibel dan load besar)
+  - 🔥 **Redis** (untuk cache cepat)
+  - 🧱 **PostgreSQL** (untuk struktur relasional)
+- 🔄 Sinkronkan event seperti `messages.upsert`, `chats.upsert`, dan `contacts.upsert` ke penyimpanan permanen.
+- 🧩 Gunakan store hanya sebagai cache atau layer middleware sementara.
 
 > [!TIP]  
 > Store ini sangat berguna untuk keperluan seperti:
-> - Menyimpan polling
-> - Retry pesan
-> - Melacak status kontak dan grup
-> - Menyediakan command `.listchat`, `.listgroup`, dll. dengan data real-time
+> - ✅ Menyimpan polling  
+> - 🔁 Retry pesan  
+> - 👥 Melacak status kontak dan grup  
+> - 🧾 Menyediakan command `.listchat`, `.listgroup`, dll. dengan data real-time
 
-Jika kamu menggunakan custom `getMessage()`, store ini juga dapat dijadikan referensi lokal untuk mendekripsi polling dan mengirim ulang pesan.
+Jika kamu menggunakan custom `getMessage()`, store ini juga dapat dijadikan referensi lokal untuk mendekripsi polling dan mengirim ulang pesan 💕
 
-## Penjelasan Tentang WhatsApp ID
+## 🪪 Penjelasan Tentang WhatsApp ID
 
 - `id` atau biasa disebut juga `jid` adalah **identitas WhatsApp** dari seseorang atau grup yang menjadi tujuan pengiriman pesan.  
-- Format ID harus sesuai dengan jenis akun tujuan:
+- Format ID harus sesuai dengan jenis akun tujuan 🌐
 
-### Jenis Format ID WhatsApp
+### 🌟 Jenis Format ID WhatsApp
 
-#### 1. Pengguna Pribadi (User)
+#### 1. 🧍‍♀️ Pengguna Pribadi (User)
 **Format:**
 ```
 [kode negara][nomor telepon]@s.whatsapp.net
@@ -739,7 +717,7 @@ Jika kamu menggunakan custom `getMessage()`, store ini juga dapat dijadikan refe
 628123456789@s.whatsapp.net
 ```
 
-#### 2. Grup WhatsApp
+#### 2. 👥 Grup WhatsApp
 **Format:**
 ```
 [timestamp grup dibuat]-[random id]@g.us
@@ -749,7 +727,7 @@ Jika kamu menggunakan custom `getMessage()`, store ini juga dapat dijadikan refe
 1234567890-987654321@g.us
 ```
 
-#### 3. Broadcast (Daftar Siaran)
+#### 3. 📢 Broadcast (Daftar Siaran)
 **Format:**
 ```
 [timestamp]@broadcast
@@ -759,13 +737,13 @@ Jika kamu menggunakan custom `getMessage()`, store ini juga dapat dijadikan refe
 1685539347@broadcast
 ```
 
-#### 4. Status (Story)
+#### 4. 👀 Status (Story)
 **Format:**
 ```
 status@broadcast
 ```
 
-#### 5. Newsletter (Channel WhatsApp)
+#### 5. 📰 Newsletter (Channel WhatsApp)
 **Format:**
 ```
 [numeric id]@newsletter
@@ -775,72 +753,69 @@ status@broadcast
 120363025487665599@newsletter
 ```
 
-> **TIP:**  
+> 💡 **TIP:**  
 > Kamu bisa mendapatkan `jid` dari:
 > - `m.key.remoteJid`
 > - `groupParticipantsUpdate`
 > - `messages.upsert`, dll
 
-> **CAUTION:**  
-> Jangan pernah mengubah format `jid` secara manual tanpa validasi.  
-> Salah format bisa menyebabkan error `bad jid` atau pesan tidak terkirim.
+> ⚠️ **CAUTION:**  
+> Jangan pernah mengubah format `jid` secara manual tanpa validasi ya~  
+> Salah format bisa menyebabkan error `bad jid` atau pesan nggak terkirim 😵‍💫
 
-## Fungsi Utilitas (Utility Functions)
+## Fungsi Utilitas (Utility Functions) 🛠️✨
 
 Baileys menyediakan beberapa fungsi utilitas penting yang sangat membantu saat mengembangkan bot:
 
 - **`getContentType(message)`**  
-  Mengembalikan jenis konten dari pesan (misalnya: `imageMessage`, `conversation`, `buttonsMessage`, dll).
+  🎯 Mengembalikan jenis konten dari pesan (misalnya: `imageMessage`, `conversation`, `buttonsMessage`, dll).
 
 - **`getDevice(jid)`**  
-  Mengembalikan jenis perangkat yang digunakan pengirim (jika tersedia), contoh: Android, iPhone, Web.
+  📱 Mengembalikan jenis perangkat yang digunakan pengirim (jika tersedia), contoh: Android, iPhone, Web.
 
 - **`makeCacheableSignalKeyStore(authState)`**  
-  Membungkus SignalKeyStore menjadi versi yang lebih efisien dan bisa di-cache, untuk performa autentikasi yang lebih cepat.
+  ⚡ Membungkus SignalKeyStore menjadi versi yang lebih efisien dan bisa di-cache, untuk performa autentikasi yang lebih cepat.
 
 - **`downloadContentFromMessage(message, type)`**  
-  Mengunduh media dari pesan (seperti gambar, video, dokumen).  
+  📥 Mengunduh media dari pesan (seperti gambar, video, dokumen).  
   `type` bisa berupa `'image'`, `'video'`, `'audio'`, `'document'`, dll.
 
   Contoh penggunaan:
   ```javascript
   const stream = await downloadContentFromMessage(msg.imageMessage, 'image')
-  const buffer = Buffer.concat([])
+  const buffer = []
   for await (const chunk of stream) buffer.push(chunk)
-  ```
+  const hasil = Buffer.concat(buffer)
+```
 
-> [!NOTE]  
-> Sebagian besar fungsi utilitas tidak dipanggil otomatis — Kamu harus menggunakannya sesuai kebutuhan, terutama saat menangani pesan media, format jid, atau decrypt konten.
+> [💡 NOTE!]
+Sebagian besar fungsi utilitas tidak dipanggil otomatis — Kamu harus menggunakannya sesuai kebutuhan, terutama saat menangani pesan media, format jid, atau decrypt konten.
 
-## Mengirim Pesan
-
-- Semua jenis pesan dapat dikirim menggunakan **satu fungsi saja**, yaitu `sendMessage()`.  
-- Lihat daftar jenis pesan yang didukung [di sini](https://baileys.whiskeyconnets.io/types/AnyMessageContent.html)  
-- Dan semua opsi pengiriman pesan [di sini](https://baileys.whiskeyconnets.io/types/MiscMessageGenerationOptions.html)
-
-Contoh:
-
+## Mengirim Pesan 💬📤  
+- Semua jenis pesan dapat dikirim menggunakan **satu fungsi saja**, yaitu `sendMessage()` 🍓  
+- Lihat daftar jenis pesan yang didukung [di sini](https://baileys.whiskeyconnets.io/types/AnyMessageContent.html) 🌐  
+- Dan semua opsi pengiriman pesan [di sini](https://baileys.whiskeyconnets.io/types/MiscMessageGenerationOptions.html) 🧩  
+Contoh:  
 ```javascript
-const jid = '628XXXXXXXXX@s.whatsapp.net' // tujuan
-const content = { text: 'Halo, ini pesan dari bot!' } // isi pesan
-const options = { quoted: null } // opsi tambahan (misalnya: balasan)
-
+const jid = '628XXXXXXXXX@s.whatsapp.net' // 🎯 tujuan  
+const content = { text: 'Halo, ini pesan dari bot!' } // 💌 isi pesan  
+const options = { quoted: null } // ⚙️ opsi tambahan (misalnya: balasan)  
 await conn.sendMessage(jid, content, options)
 ```
 
-### Pesan Non-Media
+### ✉️ Pesan Non-Media
 
-#### Pesan Teks
+#### 📝 Pesan Teks
 ```javascript
 await conn.sendMessage(jid, { text: 'Halo dunia' })
 ```
 
-#### Pesan Balasan (Quote)
+#### 🔁 Pesan Balasan (Quote)
 ```javascript
 await conn.sendMessage(jid, { text: 'Ini balasan pesan kamu' }, { quoted: m })
 ```
 
-#### Mention Pengguna (Tag)
+#### 🏷️ Mention Pengguna (Tag)
 Gunakan `@nomor` dalam teks dan sertakan `mentions` di payload.
 ```javascript
 await conn.sendMessage(
@@ -852,14 +827,14 @@ await conn.sendMessage(
 )
 ```
 
-#### Meneruskan Pesan (Forward)
+#### 📤 Meneruskan Pesan (Forward)
 Butuh objek pesan (`WAMessage`). Bisa didapat dari store atau pesan sebelumnya.
 ```javascript
 const msg = getMessageFromStore() // Kamu buat sendiri sesuai struktur
 await conn.sendMessage(jid, { forward: msg, force: true })
 ```
 
-#### Lokasi Biasa
+#### 📍 Lokasi Biasa
 ```javascript
 await conn.sendMessage(
   jid,
@@ -872,7 +847,7 @@ await conn.sendMessage(
 )
 ```
 
-#### Lokasi Langsung (Live Location)
+#### 📡 Lokasi Langsung (Live Location)
 ```javascript
 await conn.sendMessage(
   jid,
@@ -886,7 +861,7 @@ await conn.sendMessage(
 )
 ```
 
-#### Kirim Kontak (vCard)
+#### 👤 Kirim Kontak (vCard)
 ```javascript
 const vcard =
   'BEGIN:VCARD\n' +
@@ -907,11 +882,9 @@ await conn.sendMessage(
 )
 ```
 
-#### Pesan Reaksi (Reaction Message)
-
+#### ❤️‍🔥 Pesan Reaksi (Reaction Message)
 - Kamu perlu mengirimkan `key` dari pesan yang ingin diberikan reaksi.  
   `key` bisa diambil dari [store](#mengimplementasikan-data-store) atau menggunakan [WAMessageKey](https://baileys.whiskeyconnets.io/types/WAMessageKey.html).
-
 ```javascript
 await conn.sendMessage(
   jid,
@@ -924,8 +897,7 @@ await conn.sendMessage(
 )
 ```
 
-#### Pin Pesan (Pin Message)
-
+#### 📌 Pin Pesan (Pin Message)
 - Kamu juga perlu memberikan `key` dari pesan yang ingin dipin.  
   Kamu dapat mengatur durasi pin berdasarkan waktu dalam detik.
 
@@ -948,10 +920,8 @@ await conn.sendMessage(
 )
 ```
 
-### Menandai Pesan (Keep Message)
-
+### 💾 Menandai Pesan (Keep Message)
 - Untuk menyimpan pesan tertentu agar tidak terhapus otomatis.
-
 ```javascript
 await conn.sendMessage(
   jid,
@@ -964,10 +934,8 @@ await conn.sendMessage(
 )
 ```
 
-#### Pesan Polling (Poll Message)
-
+#### 🗳️ Pesan Polling (Poll Message)
 - Kirim polling ke grup atau kontak pribadi. Dapat menentukan apakah polling bersifat publik (announcement group).
-
 ```javascript
 await conn.sendMessage(
   jid,
@@ -982,10 +950,8 @@ await conn.sendMessage(
 )
 ```
 
-#### Pesan Hasil Polling (Poll Result)
-
+#### 📊 Pesan Hasil Polling (Poll Result)
 - Kirim hasil polling secara manual jika dibutuhkan. Cocok untuk sistem polling terintegrasi.
-
 ```javascript
 await conn.sendMessage(
   jid,
@@ -1002,10 +968,8 @@ await conn.sendMessage(
 )
 ```
 
-### Pesan Panggilan (Call Message)
-
+### 📞 Pesan Panggilan (Call Message)
 - Digunakan untuk mengirim notifikasi panggilan, bisa suara atau video.
-
 ```javascript
 await conn.sendMessage(
   jid,
@@ -1018,10 +982,8 @@ await conn.sendMessage(
 )
 ```
 
-### Pesan Event (Event Message)
-
+### 🎉 Pesan Event (Event Message)
 - Cocok untuk mengumumkan acara atau undangan dengan detail lokasi dan waktu.
-
 ```javascript
 await conn.sendMessage(
   jid,
@@ -1043,7 +1005,7 @@ await conn.sendMessage(
 )
 ```
 
-### Pesan Pemesanan (Order Message)
+### 📦 Pesan Pemesanan (Order Message)
 
 - Digunakan untuk menampilkan detail pemesanan dari katalog bisnis WhatsApp.
 
@@ -1068,7 +1030,7 @@ await conn.sendMessage(
 )
 ```
 
-### Pesan Produk (Product Message)
+### 🛒 Pesan Produk (Product Message)
 
 - Menampilkan detail produk dari katalog bisnis.
 
@@ -1097,7 +1059,7 @@ await conn.sendMessage(
 )
 ```
 
-### Pesan Pembayaran (Payment Message)
+### 🧾 Pesan Pembayaran (Payment Message)
 
 - Digunakan untuk mengirimkan informasi pembayaran, cocok untuk chatbot belanja.
 
@@ -1122,7 +1084,7 @@ await conn.sendMessage(
 )
 ```
 
-#### Pesan Undangan Pembayaran (Payment Invite Message)
+### 💰 Pesan Undangan Pembayaran (Payment Invite Message)
 
 - Digunakan untuk mengundang pengguna lain melakukan pembayaran.
 
@@ -1138,7 +1100,7 @@ await conn.sendMessage(
 )
 ```
 
-### Pesan Undangan Admin Channel (Admin Invite Message)
+### 🧑‍💼 Pesan Undangan Admin Channel (Admin Invite Message)
 
 - Meminta pengguna untuk menjadi admin di saluran (newsletter) kamu.
 
@@ -1157,7 +1119,7 @@ await conn.sendMessage(
 )
 ```
 
-### Undangan Grup WhatsApp (Group Invite Message)
+### 👥 Undangan Grup WhatsApp (Group Invite Message)
 
 - Mengirim undangan ke grup tertentu menggunakan kode undangan.
 
@@ -1177,7 +1139,7 @@ await conn.sendMessage(
 )
 ```
 
-### Pesan Bagikan Nomor Telepon (Share Phone Number)
+### 📲 Pesan Bagikan Nomor Telepon (Share Phone Number)
 
 - Mengirim permintaan eksplisit untuk membagikan nomor telepon pengguna.
 
@@ -1190,7 +1152,7 @@ await conn.sendMessage(
 )
 ```
 
-### Pesan Permintaan Nomor Telepon (Request Phone Number)
+### ☎️ Pesan Permintaan Nomor Telepon (Request Phone Number)
 
 - Meminta pengguna untuk membagikan nomor telepon mereka secara langsung.
 
@@ -1203,33 +1165,33 @@ await conn.sendMessage(
 )
 ```
 
-### Pesan Balasan Tombol
+## 💬 Pesan Balasan Tombol
 
-- Digunakan untuk merespons interaksi tombol yang diklik pengguna. Tipe pesan dibedakan berdasarkan jenis tombol yang digunakan.
+Fitur ini digunakan untuk merespons interaksi dari tombol yang ditekan oleh pengguna. Tipe pesan ditentukan berdasarkan jenis tombol yang digunakan — baik tombol klasik (`buttons`) maupun tombol native WhatsApp (`interactive`).
 
-#### Tombol Teks (Buttons)
+### 🔘 Tombol Teks (Buttons)
 ```javascript
 await conn.sendMessage(jid, {
-  text: 'Pilih salah satu:',
+  text: '📌 Pilih salah satu:',
   buttons: [
-    { buttonId: 'btn_1', buttonText: { displayText: 'Tombol 1' }, type: 1 },
-    { buttonId: 'btn_2', buttonText: { displayText: 'Tombol 2' }, type: 1 }
+    { buttonId: 'btn_1', buttonText: { displayText: '🔘 Tombol 1' }, type: 1 },
+    { buttonId: 'btn_2', buttonText: { displayText: '🔘 Tombol 2' }, type: 1 }
   ],
-  footer: 'Contoh footer'
+  footer: '📩 Contoh footer'
 })
 ```
 
-#### Tombol Tipe Interactive (Native Flow)
+### 🌐 Tombol Tipe Interactive (Native Flow)
 ```javascript
 await conn.sendMessage(
   jid,
   {
     buttonReply: {
-      body: 'Mau pilih yang mana?', 
+      body: '📥 Mau pilih yang mana?', 
       nativeFlows: {
         name: 'menu_options', 
-        paramsJson: JSON.stringify({ id: 'menu_1', description: 'Deskripsi interaktif' }),
-        version: 1 // bisa juga 2 atau 3
+        paramsJson: JSON.stringify({ id: 'menu_1', description: '📝 Deskripsi interaktif' }),
+        version: 1 // bisa juga 2 atau 3, tergantung skema flow
       }
     }, 
     type: 'interactive'
@@ -1237,60 +1199,66 @@ await conn.sendMessage(
 )
 ```
 
-### Pesan dengan Tombol (Buttons Message)
+### 🔘 Pesan dengan Tombol (Buttons Message)
 
-- Pesan biasa yang disertai hingga **3 tombol** untuk respon cepat.
+Fitur ini memungkinkan pengiriman pesan teks (atau media) dengan hingga **3 tombol** balasan cepat. Sangat cocok untuk perintah menu, navigasi bot, atau respons otomatis dari pengguna.
+
+Berikut contoh implementasinya:
 
 ```javascript
 await conn.sendMessage(
   jid,
   {
-    text: 'Ini adalah pesan tombol!',
-    caption: 'Gunakan jika memakai gambar/video',
-    footer: 'Salam dari Naruya Izumi!',
+    text: '📨 Ini adalah pesan tombol!',
+    caption: '🖼️ Gunakan jika memakai gambar/video',
+    footer: '📩 Salam dari Naruya Izumi!',
     buttons: [
       { 
         buttonId: 'btn1', 
-        buttonText: { displayText: 'Tombol 1' }
+        buttonText: { displayText: '🔘 Tombol 1' }
       },
       { 
         buttonId: 'btn2', 
-        buttonText: { displayText: 'Tombol 2' }
+        buttonText: { displayText: '🔘 Tombol 2' }
       },
       { 
         buttonId: 'btn3', 
-        buttonText: { displayText: 'Tombol 3' }
+        buttonText: { displayText: '🔘 Tombol 3' }
       }
     ]
   }
 )
 ```
 
-### Pesan List Tombol (Buttons List Message)
+### 📋 Pesan List Tombol (Buttons List Message)
 
-- Hanya bisa digunakan di **chat pribadi**, bukan grup.
+Fitur ini memungkinkan pengiriman pesan daftar (list) dengan beberapa bagian dan opsi di dalamnya. Ideal untuk menampilkan menu, layanan, atau kategori dalam format elegan.
+
+⚠️ Hanya dapat digunakan dalam **chat pribadi**, tidak akan bekerja di grup WhatsApp.
+
+Berikut contoh implementasinya:
 
 ```javascript
 await conn.sendMessage(
   jid,
   {
-    text: 'Ini adalah daftar pilihan!',
-    footer: 'Dipersembahkan oleh Naruya Izumi',
-    title: 'Judul Daftar Pilihan',
-    buttonText: 'Klik untuk melihat opsi',
+    text: '📑 Ini adalah daftar pilihan!',
+    footer: '📩 Dipersembahkan oleh Naruya Izumi',
+    title: '📌 Judul Daftar Pilihan',
+    buttonText: '🔽 Klik untuk melihat opsi',
     sections: [
       {
-        title: 'Bagian 1',
+        title: '📂 Bagian 1',
         rows: [
-          { title: 'Opsi 1', rowId: 'opsi1' },
-          { title: 'Opsi 2', rowId: 'opsi2', description: 'Deskripsi Opsi 2' }
+          { title: '✅ Opsi 1', rowId: 'opsi1' },
+          { title: '✅ Opsi 2', rowId: 'opsi2', description: 'ℹ️ Deskripsi Opsi 2' }
         ]
       },
       {
-        title: 'Bagian 2',
+        title: '📂 Bagian 2',
         rows: [
-          { title: 'Opsi 3', rowId: 'opsi3' },
-          { title: 'Opsi 4', rowId: 'opsi4', description: 'Deskripsi Opsi 4' }
+          { title: '✅ Opsi 3', rowId: 'opsi3' },
+          { title: '✅ Opsi 4', rowId: 'opsi4', description: 'ℹ️ Deskripsi Opsi 4' }
         ]
       }
     ]
@@ -1298,22 +1266,23 @@ await conn.sendMessage(
 )
 ```
 
-### Pesan Daftar Produk dengan Tombol (Buttons Product List Message)
+### 🛍️ Pesan Daftar Produk dengan Tombol (Buttons Product List Message)
 
-- Hanya dapat digunakan di **chat pribadi**, bukan grup.  
-- Menampilkan daftar produk dari katalog bisnis WhatsApp kamu.
+Fitur ini digunakan untuk menampilkan daftar produk dari katalog WhatsApp Business dalam bentuk tombol interaktif. Hanya bisa digunakan di **chat pribadi**, bukan dalam grup.
+
+Contoh implementasinya:
 
 ```javascript
 await conn.sendMessage(
   jid,
   {
-    text: 'Ini adalah daftar produk!',
-    footer: 'Dikirim oleh Naruya Izumi',
-    title: 'Pilih Produk Unggulan',
-    buttonText: 'Lihat Daftar Produk',
+    text: '🛒 Ini adalah daftar produk!',
+    footer: '📩 Dikirim oleh Naruya Izumi',
+    title: '🌟 Pilih Produk Unggulan',
+    buttonText: '📦 Lihat Daftar Produk',
     productList: [
       {
-        title: 'Kategori Produk Utama',
+        title: '🧁 Kategori Produk Utama',
         products: [
           { productId: '1234' },
           { productId: '5678' }
@@ -1321,64 +1290,66 @@ await conn.sendMessage(
       }
     ],
     businessOwnerJid: '628xxx@s.whatsapp.net',
-    thumbnail: 'https://example.jpg' // atau buffer gambar
+    thumbnail: 'https://example.jpg' // bisa juga Buffer gambar
   }
 )
 ```
 
-### Pesan Kartu dengan Tombol (Buttons Cards Message)
+### 🃏 Pesan Kartu dengan Tombol (Buttons Cards Message)
 
-- Menampilkan beberapa kartu (card) interaktif dengan gambar atau video + tombol.
+Fitur ini memungkinkan pengiriman beberapa kartu (cards) interaktif dalam satu pesan. Setiap kartu dapat berisi gambar atau video, disertai judul, deskripsi, dan tombol-tombol aksi seperti balasan cepat atau tautan.
+
+Contoh implementasi lengkap:
 
 ```javascript
 await conn.sendMessage(
   jid,
   {
-    text: 'Isi Utama Pesan',
-    title: 'Judul Utama',
-    subtile: 'Subjudul Opsional',
-    footer: 'Footer Pesan',
+    text: '📢 Isi Utama Pesan',
+    title: '🗂️ Judul Utama',
+    subtile: '📌 Subjudul Opsional',
+    footer: '📩 Footer Pesan',
 
     cards: [
       {
-        image: { url: 'https://example.jpg' }, // bisa juga Buffer
-        title: 'Judul Kartu',
-        body: 'Isi Konten Kartu',
-        footer: 'Footer Kartu',
+        image: { url: 'https://example.jpg' }, // Bisa juga Buffer gambar
+        title: '🖼️ Judul Kartu',
+        body: '📝 Isi Konten Kartu',
+        footer: '📍 Footer Kartu',
         buttons: [
           {
             name: 'quick_reply',
             buttonParamsJson: JSON.stringify({
-              display_text: 'Tombol Cepat',
+              display_text: '💬 Tombol Cepat',
               id: 'ID_TOMBOL_1'
             })
           },
           {
             name: 'cta_url',
             buttonParamsJson: JSON.stringify({
-              display_text: 'Kunjungi Website',
+              display_text: '🔗 Kunjungi Website',
               url: 'https://www.example.com'
             })
           }
         ]
       },
       {
-        video: { url: 'https://example.mp4' }, // bisa juga Buffer video
-        title: 'Judul Kartu Video',
-        body: 'Deskripsi Konten',
-        footer: 'Footer Kartu',
+        video: { url: 'https://example.mp4' }, // Bisa juga Buffer video
+        title: '🎥 Judul Kartu Video',
+        body: '📝 Deskripsi Konten',
+        footer: '📍 Footer Kartu',
         buttons: [
           {
             name: 'quick_reply',
             buttonParamsJson: JSON.stringify({
-              display_text: 'Respon Cepat',
+              display_text: '⚡ Respon Cepat',
               id: 'ID_TOMBOL_2'
             })
           },
           {
             name: 'cta_url',
             buttonParamsJson: JSON.stringify({
-              display_text: 'Lihat Selengkapnya',
+              display_text: '🔎 Lihat Selengkapnya',
               url: 'https://www.example.com'
             })
           }
@@ -1389,35 +1360,37 @@ await conn.sendMessage(
 )
 ```
 
-### Pesan Tombol Template (Buttons Template Message)
+### 🔘 Pesan Tombol Template (Buttons Template Message)
 
-- Menampilkan tombol dengan tipe URL, panggilan, atau tombol balasan cepat.
+Fitur ini memungkinkan kamu mengirimkan pesan dengan tombol-tombol cepat seperti URL, panggilan, dan balasan cepat (quick reply). Sangat cocok untuk navigasi channel, kontak admin, atau aksi otomatis.
+
+Berikut contoh implementasinya:
 
 ```javascript
 await conn.sendMessage(
   jid,
   {
-    text: 'Ini adalah pesan template tombol!',
-    footer: 'Dikirim oleh Naruya Izumi',
+    text: '✨ Ini adalah pesan template tombol!',
+    footer: '📩 Dikirim oleh Naruya Izumi',
     templateButtons: [
       {
         index: 1,
         urlButton: {
-          displayText: 'Ikuti Channel',
+          displayText: '🌐 Ikuti Channel',
           url: 'https://whatsapp.com/channel/0029Vag9VSI2ZjCocqa2lB1y'
         }
       },
       {
         index: 2,
         callButton: {
-          displayText: 'Hubungi Saya!',
+          displayText: '📞 Hubungi Saya!',
           phoneNumber: '628xxxx'
         }
       },
       {
         index: 3,
         quickReplyButton: {
-          displayText: 'Balas Cepat',
+          displayText: '💬 Balas Cepat',
           id: 'id-button-reply'
         }
       }
@@ -1426,30 +1399,30 @@ await conn.sendMessage(
 )
 ```
 
-### Pesan Tombol Interaktif (Interactive Buttons)
+### 🌸 Pesan Tombol Interaktif (Interactive Buttons)
 
-- Mendukung berbagai jenis tombol dan dapat digunakan dengan media.
+- Mendukung berbagai jenis tombol dan dapat digunakan bersama media seperti teks, gambar, dan lainnya.
 
 ```javascript
 await conn.sendMessage(
   jid,
   {
-    text: 'Ini pesan interaktif!',
-    title: 'Hai!',
-    subtitle: 'Subjudul di sini',
-    footer: 'Dikirim oleh Naruya Izumi',
+    text: '✨ Ini pesan interaktif!',
+    title: '👋 Hai!',
+    subtitle: '🌼 Subjudul di sini',
+    footer: '📩 Dikirim oleh Naruya Izumi',
     interactiveButtons: [
       {
         name: 'quick_reply',
         buttonParamsJson: JSON.stringify({
-          display_text: 'Klik Aku!',
+          display_text: '🔁 Klik Aku!',
           id: 'id_kamu'
         })
       },
       {
         name: 'cta_url',
         buttonParamsJson: JSON.stringify({
-          display_text: 'Kunjungi Channel',
+          display_text: '🌐 Kunjungi Channel',
           url: 'https://whatsapp.com/channel/0029Vag9VSI2ZjCocqa2lB1y',
           merchant_url: 'https://whatsapp.com/channel/0029Vag9VSI2ZjCocqa2lB1y'
         })
@@ -1457,36 +1430,36 @@ await conn.sendMessage(
       {
         name: 'cta_copy',
         buttonParamsJson: JSON.stringify({
-          display_text: 'Salin Link',
+          display_text: '📋 Salin Link',
           copy_code: 'https://whatsapp.com/channel/0029Vag9VSI2ZjCocqa2lB1y'
         })
       },
       {
         name: 'cta_call',
         buttonParamsJson: JSON.stringify({
-          display_text: 'Telepon Saya',
+          display_text: '📞 Telepon Saya',
           phone_number: '628xxxx'
         })
       },
       {
         name: 'single_select',
         buttonParamsJson: JSON.stringify({
-          title: 'Pilih Opsi',
+          title: '🔽 Pilih Opsi',
           sections: [
             {
-              title: 'Pilihan Utama',
-              highlight_label: 'Rekomendasi',
+              title: '🌟 Pilihan Utama',
+              highlight_label: '💖 Rekomendasi',
               rows: [
                 {
-                  header: 'Header 1',
-                  title: 'Opsi 1',
-                  description: 'Deskripsi 1',
+                  header: '📝 Header 1',
+                  title: '✨ Opsi 1',
+                  description: '🍓 Deskripsi 1',
                   id: 'id1'
                 },
                 {
-                  header: 'Header 2',
-                  title: 'Opsi 2',
-                  description: 'Deskripsi 2',
+                  header: '📝 Header 2',
+                  title: '✨ Opsi 2',
+                  description: '🍓 Deskripsi 2',
                   id: 'id2'
                 }
               ]
@@ -1499,41 +1472,43 @@ await conn.sendMessage(
 )
 ```
 
-#### Versi dengan Media
+### 📎 Versi dengan Media
 
-##### Gambar
+Pengiriman pesan interaktif juga bisa dikombinasikan dengan media seperti gambar, video, dokumen, lokasi, dan produk katalog. Berikut adalah contoh lengkap penggunaannya dalam satu format:
+
 ```javascript
+#### 📸 Gambar
 await conn.sendMessage(
   jid,
   {
     image: { url: 'https://example.jpg' },
-    caption: 'Isi Pesan',
-    title: 'Judul',
-    subtitle: 'Subjudul',
-    footer: 'Footer',
+    caption: '✨ Isi Pesan',
+    title: '🖼️ Judul',
+    subtitle: '📌 Subjudul',
+    footer: '📩 Footer',
     interactiveButtons: [ /* tombol seperti di atas */ ],
     hasMediaAttachment: false
   }
 )
 ```
 
-##### Video
+#### 🎥 Video
 ```javascript
 await conn.sendMessage(
   jid,
   {
     video: { url: 'https://example.mp4' },
-    caption: 'Isi Video',
-    title: 'Judul',
-    subtitle: 'Subjudul',
-    footer: 'Footer',
+    caption: '🎬 Isi Video',
+    title: '📺 Judul',
+    subtitle: '📌 Subjudul',
+    footer: '📩 Footer',
     interactiveButtons: [ /* tombol seperti di atas */ ],
     hasMediaAttachment: false
   }
 )
 ```
 
-##### Dokumen
+#### 📄 Dokumen
 ```javascript
 await conn.sendMessage(
   jid,
@@ -1541,17 +1516,17 @@ await conn.sendMessage(
     document: { url: 'https://example.jpg' },
     mimetype: 'image/jpeg',
     jpegThumbnail: await conn.resize('https://example.jpg', 320, 320),
-    caption: 'Isi Dokumen',
-    title: 'Judul',
-    subtitle: 'Subjudul',
-    footer: 'Footer',
+    caption: '📝 Isi Dokumen',
+    title: '📄 Judul',
+    subtitle: '📌 Subjudul',
+    footer: '📩 Footer',
     interactiveButtons: [ /* tombol seperti di atas */ ],
     hasMediaAttachment: false
   }
 )
 ```
 
-##### Lokasi
+#### 📍 Lokasi
 ```javascript
 await conn.sendMessage(
   jid,
@@ -1561,17 +1536,17 @@ await conn.sendMessage(
       degreesLongitude: 106.8,
       name: 'Naruya HQ'
     },
-    caption: 'Ayo ke sini!',
-    title: 'Lokasi Tujuan',
-    subtitle: 'Subjudul Lokasi',
-    footer: 'Peta lokasi',
+    caption: '📍 Ayo ke sini!',
+    title: '🗺️ Lokasi Tujuan',
+    subtitle: '📌 Subjudul Lokasi',
+    footer: '🧭 Peta lokasi',
     interactiveButtons: [ /* tombol seperti di atas */ ],
     hasMediaAttachment: false
   }
 )
 ```
 
-##### Produk
+#### 🛍️ Produk (Katalog WhatsApp)
 ```javascript
 await conn.sendMessage(
   jid,
@@ -1579,8 +1554,8 @@ await conn.sendMessage(
     product: {
       productImage: { url: 'https://example.jpg' },
       productId: '836xxx',
-      title: 'Produk Pilihan',
-      description: 'Deskripsi produk terbaik',
+      title: '🎁 Produk Pilihan',
+      description: '🛒 Deskripsi produk terbaik',
       currencyCode: 'IDR',
       priceAmount1000: '283000',
       retailerId: 'NaruyaStore',
@@ -1588,19 +1563,51 @@ await conn.sendMessage(
       productImageCount: 1
     },
     businessOwnerJid: '628xxx@s.whatsapp.net',
-    caption: 'Produk baru tersedia!',
-    title: 'Nama Produk',
-    subtitle: 'Subjudul Produk',
-    footer: 'Info Produk',
+    caption: '🛍️ Produk baru tersedia!',
+    title: '📦 Nama Produk',
+    subtitle: '📌 Subjudul Produk',
+    footer: '📋 Info Produk',
     interactiveButtons: [ /* tombol seperti di atas */ ],
     hasMediaAttachment: false
   }
 )
 ```
 
-### Mention Status (Status Mentions Message)
+### 💳 Kirim Tombol "Salin Kunci Pix"
 
-- Digunakan untuk membuat status WhatsApp yang menyebut seseorang secara langsung.
+Fitur ini memungkinkan bot untuk mengirimkan tombol interaktif kepada pengguna WhatsApp berupa informasi pembayaran menggunakan metode **Pix Static Code**. Cocok digunakan untuk transaksi cepat, donasi, atau pembelian produk digital.
+
+### 📌 Contoh Penggunaan:
+
+```javascript
+await conn.sendMessage(
+  jid,
+  {
+    text: '', // Ini wajib diisi, meskipun kosong
+    interactiveButtons: [
+      {
+        name: 'payment_info',
+        buttonParamsJson: JSON.stringify({
+          payment_settings: [{
+            type: "pix_static_code",
+            pix_static_code: {
+              merchant_name: 'naruyaizumi',
+              key: 'example@naruyaizumi.com',
+              key_type: 'EMAIL' // Bisa juga: PHONE, EMAIL, CPF, atau EVP
+            }
+          }]
+        })
+      }
+    ],
+  }
+)
+```
+
+### 🏷️ Mention Status (Status Mentions Message)
+
+Fitur ini digunakan untuk membuat status WhatsApp yang menyebut seseorang secara langsung menggunakan format status dengan media atau caption.
+
+Berikut contoh implementasinya:
 
 ```javascript
 await conn.sendStatusMentions(
@@ -1609,15 +1616,13 @@ await conn.sendStatusMentions(
     image: {
       url: 'https://example.com.jpg'
     }, 
-    caption: 'Halo dari Naruya!'
+    caption: '✨ Halo dari Naruya!'
   }
 )
 ```
 
-### Pesan Album (Send Album Message)
-
+### 📚 Pesan Album (Send Album Message)
 - Mengirim beberapa gambar atau video sebagai album (sekuens media). Bisa pakai `Buffer` atau URL.
-
 ```javascript
 await conn.sendAlbumMessage(
   jid,
@@ -1646,11 +1651,11 @@ await conn.sendAlbumMessage(
 )
 ```
 
-### Pesan Toko (Shop Message)
+### 🛍️ Pesan Toko (Shop Message)
 
 - Digunakan untuk mengarahkan pengguna ke katalog atau produk dalam fitur bisnis WhatsApp.
 
-#### Teks Saja
+#### 📝 Teks Saja
 ```javascript
 await conn.sendMessage(
   jid, 
@@ -1668,7 +1673,7 @@ await conn.sendMessage(
 )
 ```
 
-#### Gambar
+#### 🖼️ Gambar
 ```javascript
 await conn.sendMessage(
   jid, 
@@ -1688,7 +1693,7 @@ await conn.sendMessage(
 )
 ```
 
-#### Video
+#### 🎥 Video
 ```javascript
 await conn.sendMessage(
   jid, 
@@ -1708,7 +1713,7 @@ await conn.sendMessage(
 )
 ```
 
-#### Dokumen
+#### 📎 Dokumen
 ```javascript
 await conn.sendMessage(
   jid, 
@@ -1730,7 +1735,7 @@ await conn.sendMessage(
 )
 ```
 
-#### Lokasi
+#### 📍 Lokasi
 ```javascript
 await conn.sendMessage(
   jid, 
@@ -1754,7 +1759,7 @@ await conn.sendMessage(
 )
 ```
 
-#### Produk
+#### 🛒 Produk
 ```javascript
 await conn.sendMessage(
   jid,
@@ -1785,11 +1790,11 @@ await conn.sendMessage(
 )
 ```
 
-### Pesan Koleksi (Collection Message)
+### 📚 Pesan Koleksi (Collection Message)
 
 - Fitur ini digunakan untuk menampilkan koleksi katalog dari bisnis tertentu di WhatsApp.
 
-#### Teks Saja
+#### 📝 Teks Saja
 ```javascript
 await conn.sendMessage(
   jid, 
@@ -1808,7 +1813,7 @@ await conn.sendMessage(
 )
 ```
 
-#### Gambar
+#### 🖼️ Gambar
 ```javascript
 await conn.sendMessage(
   jid, 
@@ -1829,7 +1834,7 @@ await conn.sendMessage(
 )
 ```
 
-#### Video
+#### 🎥 Video
 ```javascript
 await conn.sendMessage(
   jid, 
@@ -1850,7 +1855,7 @@ await conn.sendMessage(
 )
 ```
 
-#### Dokumen
+#### 📎 Dokumen
 ```javascript
 await conn.sendMessage(
   jid, 
@@ -1873,7 +1878,7 @@ await conn.sendMessage(
 )
 ```
 
-#### Lokasi
+#### 📍 Lokasi
 ```javascript
 await conn.sendMessage(
   jid, 
@@ -1898,7 +1903,7 @@ await conn.sendMessage(
 )
 ```
 
-#### Produk
+#### 🛍️ Produk
 ```javascript
 await conn.sendMessage(
   jid,
@@ -1930,13 +1935,13 @@ await conn.sendMessage(
 )
 ```
 
-### Mengirim Pesan dengan Pratinjau Link (Link Preview)
+### 🌐 Mengirim Pesan dengan Pratinjau Link (Link Preview)
 
 1. Secara default, WhatsApp Web tidak menampilkan pratinjau link.
 2. Namun, Baileys menyediakan fungsi pembangkit preview link otomatis.
-3. Untuk mengaktifkannya, install dulu dependensinya dengan:  
+3. Untuk mengaktifkannya, install dulu dependensinya dengan:
    ```bash
-   yarn add link-preview-js
+   npm install link-preview-js
    ```
 4. Contoh kirim pesan dengan pratinjau link:
 ```javascript
@@ -1948,7 +1953,7 @@ await conn.sendMessage(
 )
 ```
 
-### Pesan Media (Media Messages)
+### 🎞️ Pesan Media (Media Messages)
 
 Mengirim media (gambar, video, audio, stiker) jauh lebih efisien dengan Baileys.
 
@@ -1959,7 +1964,7 @@ Mengirim media (gambar, video, audio, stiker) jauh lebih efisien dengan Baileys.
 > [!TIP]  
 > Gunakan **stream** atau **url langsung** agar lebih hemat memori.
 
-#### Pesan GIF (video pendek)
+#### 🌀 Pesan GIF (video pendek)
 
 > WhatsApp tidak mendukung file `.gif`, maka harus dikirim dalam bentuk `.mp4` dengan flag `gifPlayback: true`
 
@@ -1974,7 +1979,7 @@ await conn.sendMessage(
 )
 ```
 
-#### Pesan Video
+#### 🎥 Pesan Video
 ```javascript
 await conn.sendMessage(
   jid,
@@ -1985,8 +1990,7 @@ await conn.sendMessage(
 )
 ```
 
-#### Pesan Video PTV (Picture to Video / video bulat WA)
-
+#### 🔵 Pesan Video PTV (Picture to Video / video bulat WA)
 ```javascript
 await conn.sendMessage(
   jid,
@@ -1997,7 +2001,7 @@ await conn.sendMessage(
 )
 ```
 
-#### Pesan Audio
+#### 🔊 Pesan Audio
 
 > Agar audio kompatibel di semua perangkat, sebaiknya gunakan `ffmpeg` dengan pengaturan berikut:
 
@@ -2015,8 +2019,7 @@ await conn.sendMessage(
 )
 ```
 
-#### Pesan Gambar
-
+#### 🖼️ Pesan Gambar
 ```javascript
 await conn.sendMessage(
   jid,
@@ -2027,7 +2030,7 @@ await conn.sendMessage(
 )
 ```
 
-#### Pesan View Once
+#### 👁️ Pesan View Once
 
 > Fitur **View Once** memungkinkan media hanya bisa dilihat satu kali.
 
@@ -2042,10 +2045,9 @@ await conn.sendMessage(
 )
 ```
 
-## Memodifikasi Pesan
+## ✏️ Memodifikasi Pesan
 
-### Menghapus Pesan (Untuk Semua Orang)
-
+### 🗑️ Menghapus Pesan (Untuk Semua Orang)
 - Digunakan untuk menarik pesan yang sudah dikirim (delete for everyone).
 
 ```javascript
@@ -2053,11 +2055,10 @@ const msg = await conn.sendMessage(jid, { text: 'Halo dunia' })
 await conn.sendMessage(jid, { delete: msg.key })
 ```
 
-> **Catatan:**  
+> **📝 Catatan:**  
 > Untuk menghapus pesan **hanya untuk diri sendiri**, gunakan `chatModify` (lihat bagian [Modifikasi Chat](#modifying-chats)).
 
-### Mengedit Pesan
-
+### 📝 Mengedit Pesan
 - Kamu dapat mengedit isi pesan yang telah dikirim sebelumnya, selama masih berada dalam konteks yang diizinkan oleh WhatsApp.
 
 ```javascript
@@ -2067,23 +2068,22 @@ await conn.sendMessage(jid, {
 })
 ```
 
-## Memanipulasi Pesan Media
+## 🎨 Memanipulasi Pesan Media
 
-### Menambahkan Thumbnail pada Media
-
+### 🖼️ Menambahkan Thumbnail pada Media
 - Thumbnail (gambar pratinjau) untuk **gambar** dan **stiker** bisa dihasilkan secara otomatis jika kamu menambahkan salah satu dari dependency berikut:
 
 ```bash
-yarn add jimp
+npm install jimp
 # atau
-yarn add sharp
+npm install sharp
 ```
 
 - Untuk **video**, kamu juga bisa menghasilkan thumbnail otomatis, tapi pastikan kamu sudah install `ffmpeg` di sistem kamu.
 
-> Contoh penggunaan otomatis biasanya tidak perlu kamu atur manual — Baileys akan meng-generate thumbnail bila dependensi sudah tersedia.
+> ✅ Contoh penggunaan otomatis biasanya tidak perlu kamu atur manual — Baileys akan meng-generate thumbnail bila dependensi sudah tersedia.
 
-### Mengunduh Media dari Pesan (Downloading Media Messages)
+### 💾 Mengunduh Media dari Pesan (Downloading Media Messages)
 
 Jika kamu ingin menyimpan media yang diterima dari pengguna:
 
@@ -2114,7 +2114,7 @@ stream.pipe(file)
 })
 ```
 
-### Re-upload Media ke WhatsApp
+### 🔄 Re-upload Media ke WhatsApp
 
 Jika media sudah dihapus dari server WhatsApp, kamu bisa minta perangkat pengirim untuk melakukan *reupload*:
 
@@ -2122,9 +2122,9 @@ Jika media sudah dihapus dari server WhatsApp, kamu bisa minta perangkat pengiri
 await conn.updateMediaMessage(msg)
 ```
 
-> Fitur ini penting saat media gagal diunduh karena sudah tidak tersedia di server WhatsApp.
+> ⚠️ Fitur ini penting saat media gagal diunduh karena sudah tidak tersedia di server WhatsApp.
 
-## Menolak Panggilan (Reject Call)
+## 🚫 Menolak Panggilan (Reject Call)
 
 - Kamu bisa mendapatkan `callId` dan `callFrom` dari event `call`.
 
@@ -2132,34 +2132,35 @@ await conn.updateMediaMessage(msg)
 await conn.rejectCall(callId, callFrom)
 ```
 
-## Mengirim Status ke Chat (Send States in Chat)
+## 📨 Mengirim Status ke Chat (Send States in Chat)
 
-### Menandai Pesan Dibaca (Reading Messages)
+### ✅ Menandai Pesan Dibaca (Reading Messages)
 
 - Kamu harus menandai pesan satu per satu menggunakan key dari `WAMessage`.
 - Tidak bisa menandai seluruh chat sebagai terbaca secara langsung seperti di WhatsApp Web.
 
 ```javascript
 const key = {
-remoteJid: '628xxx@s.whatsapp.net',
-fromMe: false,
-id: 'ABCDEF123456'
+  remoteJid: '628xxx@s.whatsapp.net',
+  fromMe: false,
+  id: 'ABCDEF123456'
 }
 
 // bisa juga array untuk banyak pesan sekaligus
 await conn.readMessages([key])
 ```
 
-> Kamu bisa mendapatkan `messageID` dari:
+> 🍓 Kamu bisa mendapatkan `messageID` dari:
+
 ```javascript
 let messageID = message.key.id
 ```
 
-### Memperbarui Status Kehadiran (Update Presence)
+### ✨ Memperbarui Status Kehadiran (Update Presence)
 
 - Status `presence` bisa berupa:  
   `available`, `unavailable`, `composing`, `recording`, `paused`, dll.  
-  [Lihat daftar lengkapnya di sini](https://baileys.whiskeyconnets.io/types/WAPresence.html)
+  [📖 Lihat daftar lengkapnya di sini](https://baileys.whiskeyconnets.io/types/WAPresence.html)
 
 ```javascript
 await conn.sendPresenceUpdate('available', jid) // online
@@ -2167,28 +2168,29 @@ await conn.sendPresenceUpdate('composing', jid) // mengetik
 await conn.sendPresenceUpdate('unavailable', jid) // offline
 ```
 
-> **Catatan:**  
+> 💡 **Catatan:**  
 > Jika kamu menggunakan WhatsApp Desktop secara bersamaan, maka WA tidak akan mengirim notifikasi ke perangkat lain.  
 > Kalau kamu ingin tetap terima notifikasi di HP, kamu bisa set status bot jadi offline:
+
 ```javascript
 await conn.sendPresenceUpdate('unavailable')
 ```
 
-## Memodifikasi Chat (Modifying Chats)
+## 🛠️ Memodifikasi Chat (Modifying Chats)
 
 WhatsApp menggunakan komunikasi terenkripsi untuk memperbarui status chat atau aplikasi. Beberapa fitur modifikasi sudah didukung oleh Baileys, dan bisa kamu kirim seperti di bawah ini.
 
-> **PERINGATAN:**  
+> ⚠️ **PERINGATAN:**  
 > Jika kamu salah menggunakan modifikasi ini (misal kirim data invalid), WhatsApp bisa **logout semua perangkat** dan kamu harus scan ulang QR.
 
-### Mengarsipkan Chat (Archive)
+### 📥 Mengarsipkan Chat (Archive)
 
 ```javascript
 let lastMsgInChat = await getLastMessageInChat(jid) // kamu buat fungsi ini sendiri
 await conn.chatModify({ archive: true, lastMessages: [lastMsgInChat] }, jid)
 ```
 
-### Membisukan / Mengaktifkan Notifikasi (Mute / Unmute)
+### 🔕 Membisukan / Mengaktifkan Notifikasi (Mute / Unmute)
 
 | Durasi    | Milidetik       |
 |-----------|------------------|
@@ -2201,14 +2203,14 @@ await conn.chatModify({ mute: 8 * 60 * 60 * 1000 }, jid) // bisukan 8 jam
 await conn.chatModify({ mute: null }, jid) // aktifkan kembali notifikasi
 ```
 
-### Tandai Sebagai Terbaca / Belum Dibaca
+### 📩 Tandai Sebagai Terbaca / Belum Dibaca
 
 ```javascript
 let lastMsgInChat = await getLastMessageInChat(jid)
 await conn.chatModify({ markRead: false, lastMessages: [lastMsgInChat] }, jid)
 ```
 
-### Hapus Pesan Hanya untuk Saya
+### 🧹 Hapus Pesan Hanya untuk Saya
 
 ```javascript
 await conn.chatModify(
@@ -2227,7 +2229,7 @@ await conn.chatModify(
 )
 ```
 
-### Hapus Chat Secara Keseluruhan
+### 🗑️ Hapus Chat Secara Keseluruhan
 
 ```javascript
 let lastMsgInChat = await getLastMessageInChat(jid)
@@ -2242,7 +2244,7 @@ await conn.chatModify({
 }, jid)
 ```
 
-### Pin / Unpin Chat
+## 📌 Pin / Unpin Chat
 
 ```javascript
 await conn.chatModify({
@@ -2250,7 +2252,7 @@ await conn.chatModify({
 }, jid)
 ```
 
-### Tandai / Hapus Bintang dari Pesan
+## ⭐ Tandai / Hapus Bintang dari Pesan
 
 ```javascript
 await conn.chatModify({
@@ -2266,7 +2268,7 @@ await conn.chatModify({
 }, jid)
 ```
 
-### Pesan Menghilang Otomatis (Disappearing Messages)
+## 🕒 Pesan Menghilang Otomatis (Disappearing Messages)
 
 | Durasi    | Detik (Seconds) |
 |-----------|------------------|
@@ -2275,7 +2277,7 @@ await conn.chatModify({
 | 7 Hari    | `604800`         |
 | 90 Hari   | `7776000`        |
 
-#### Aktifkan
+### ✅ Aktifkan
 
 ```javascript
 await conn.sendMessage(jid, {
@@ -2283,7 +2285,7 @@ await conn.sendMessage(jid, {
 })
 ```
 
-#### Kirim Pesan dengan Mode Menghilang
+### ✉️ Kirim Pesan dengan Mode Menghilang
 
 ```javascript
 await conn.sendMessage(
@@ -2293,7 +2295,7 @@ await conn.sendMessage(
 )
 ```
 
-#### Nonaktifkan
+### ❌ Nonaktifkan
 
 ```javascript
 await conn.sendMessage(jid, {
@@ -2301,20 +2303,22 @@ await conn.sendMessage(jid, {
 })
 ```
 
-### Menghapus Pesan Tertentu (Clear Messages)
+## 🧽 Menghapus Pesan Tertentu (Clear Messages)
+
 ```javascript
 await conn.clearMessage(jid, key, timestamps)
 ```
 
-## Query Pengguna (User Queries)
+## 🔍 Query Pengguna (User Queries)
 
-### Cek Apakah Nomor Terdaftar di WhatsApp
+### 📞 Cek Apakah Nomor Terdaftar di WhatsApp
+
 ```javascript
 let [result] = await conn.onWhatsApp(jid)
 if (result.exists) console.log(`${jid} terdaftar di WhatsApp sebagai ${result.jid}`)
 ```
 
-### Ambil Riwayat Chat (termasuk grup)
+### 📜 Ambil Riwayat Chat (termasuk grup)
 
 > Kamu perlu mengambil pesan paling lama dari chat tersebut
 
@@ -2327,23 +2331,23 @@ await conn.fetchMessageHistory(
 )
 ```
 
-- Hasilnya akan dikirimkan melalui event `messaging.history-set`
+📥 Hasilnya akan dikirimkan melalui event `messaging.history-set`
 
-### Ambil Status WhatsApp (Bio)
+### 📝 Ambil Status WhatsApp (Bio)
 
 ```javascript
 let status = await conn.fetchStatus(jid)
 console.log('Status: ' + status)
 ```
 
-### Ambil Foto Profil (Profil, Grup, Channel)
+### 🖼️ Ambil Foto Profil (Profil, Grup, Channel)
 
 ```javascript
 let ppUrl = await conn.profilePictureUrl(jid)
 console.log('Foto profil: ' + ppUrl)
 ```
 
-### Ambil Profil Bisnis (Business Profile)
+### 🧾 Ambil Profil Bisnis (Business Profile)
 
 > Cocok untuk akun bisnis WhatsApp, seperti deskripsi & kategori bisnis
 
@@ -2352,28 +2356,28 @@ let profile = await conn.getBusinessProfile(jid)
 console.log('Deskripsi bisnis: ' + profile.description + ', Kategori: ' + profile.category)
 ```
 
-### Cek Kehadiran Seseorang (Presence: Online / Typing)
+### 🟢 Cek Kehadiran Seseorang (Presence: Online / Typing)
 
 ```javascript
 conn.ev.on('presence.update', console.log)
 await conn.presenceSubscribe(jid)
 ```
 
-## Ubah Profil
+## ✏️ Ubah Profil
 
-### Ubah Status Profil (Bio)
+### ✨ Ubah Status Profil (Bio)
 
 ```javascript
 await conn.updateProfileStatus('Halo Dunia!')
 ```
 
-### Ubah Nama Profil
+### 🪪 Ubah Nama Profil
 
 ```javascript
 await conn.updateProfileName('Naruya Izumi')
 ```
 
-### Ubah Foto Profil (termasuk grup)
+### 📷 Ubah Foto Profil (termasuk grup)
 
 > Sama seperti pesan media, kamu bisa pakai:  
 > `{ url }`, `Buffer`, atau `{ stream }`
@@ -2382,17 +2386,18 @@ await conn.updateProfileName('Naruya Izumi')
 await conn.updateProfilePicture(jid, { url: './foto-baru.jpeg' })
 ```
 
-### Hapus Foto Profil (termasuk grup)
+### ❌ Hapus Foto Profil (termasuk grup)
 
 ```javascript
 await conn.removeProfilePicture(jid)
 ```
 
-## Grup WhatsApp (Groups)
+## 👥 Grup WhatsApp (Groups)
 
 > Untuk mengubah pengaturan grup, kamu harus menjadi admin grup tersebut.
 
-### Membuat Grup
+### 📌 Membuat Grup
+
 ```javascript
 let group = await conn.groupCreate('Grup Hebat Naruya', ['1234@s.whatsapp.net', '4564@s.whatsapp.net'])
 console.log('Grup berhasil dibuat dengan ID: ' + group.gid)
@@ -2400,7 +2405,7 @@ console.log('Grup berhasil dibuat dengan ID: ' + group.gid)
 await conn.sendMessage(group.id, { text: 'Halo semuanya!' })
 ```
 
-### Tambah / Hapus / Jadikan Admin / Turunkan Admin
+### ➕➖ Tambah / Hapus / Jadikan Admin / Turunkan Admin
 
 ```javascript
 await conn.groupParticipantsUpdate(
@@ -2410,19 +2415,19 @@ await conn.groupParticipantsUpdate(
 )
 ```
 
-### Ubah Nama Grup
+### ✏️ Ubah Nama Grup
 
 ```javascript
 await conn.groupUpdateSubject(jid, 'Nama Baru Grup!')
 ```
 
-### Ubah Deskripsi Grup
+### 📃 Ubah Deskripsi Grup
 
 ```javascript
 await conn.groupUpdateDescription(jid, 'Deskripsi baru untuk grup ini')
 ```
 
-### Ubah Pengaturan Grup
+### 🛠️ Ubah Pengaturan Grup
 
 ```javascript
 // hanya admin yang bisa kirim pesan
@@ -2438,13 +2443,13 @@ await conn.groupSettingUpdate(jid, 'unlocked')
 await conn.groupSettingUpdate(jid, 'locked')
 ```
 
-### Keluar dari Grup
+### 🚪 Keluar dari Grup
 
 ```javascript
 await conn.groupLeave(jid)
 ```
 
-### Dapatkan Kode Undangan Grup
+### 🔗 Dapatkan Kode Undangan Grup
 
 ```javascript
 let code = await conn.groupInviteCode(jid)
@@ -2452,49 +2457,49 @@ console.log('Kode undangan grup: ' + code)
 // gabung pakai: https://chat.whatsapp.com/ + code
 ```
 
-### Reset / Ganti Kode Undangan Grup
+### ♻️ Reset / Ganti Kode Undangan Grup
 
 ```javascript
 let newCode = await conn.groupRevokeInvite(jid)
 console.log('Kode undangan baru: ' + newCode)
 ```
 
-### Gabung Grup dengan Kode Undangan
+### 🤝 Gabung Grup dengan Kode Undangan
 
 ```javascript
 let response = await conn.groupAcceptInvite('ABC123DEF456')
 console.log('Berhasil gabung ke grup: ' + response)
 ```
 
-### Lihat Info Grup dari Kode Undangan
+### 🔍 Lihat Info Grup dari Kode Undangan
 
 ```javascript
 let response = await conn.groupGetInviteInfo('ABC123DEF456')
 console.log('Info grup: ', response)
 ```
 
-### Lihat Metadata Grup (peserta, nama, deskripsi, dll.)
+### 📑 Lihat Metadata Grup
 
 ```javascript
 let metadata = await conn.groupMetadata(jid)
 console.log(metadata.id + ', Nama: ' + metadata.subject + ', Deskripsi: ' + metadata.desc)
 ```
 
-### Gabung Grup dari `groupInviteMessage`
+### 📨 Gabung Grup dari groupInviteMessage
 
 ```javascript
 let response = await conn.groupAcceptInviteV4(jid, groupInviteMessage)
 console.log('Gabung ke grup: ' + response)
 ```
 
-### Lihat Daftar Pengguna yang Minta Gabung
+### 🗂️ Lihat Daftar Pengguna yang Minta Gabung
 
 ```javascript
 let response = await conn.groupRequestParticipantsList(jid)
 console.log(response)
 ```
 
-### Setujui / Tolak Permintaan Gabung
+### ✅❌ Setujui / Tolak Permintaan Gabung
 
 ```javascript
 let response = await conn.groupRequestParticipantsUpdate(
@@ -2505,14 +2510,14 @@ let response = await conn.groupRequestParticipantsUpdate(
 console.log(response)
 ```
 
-### Dapatkan Metadata Semua Grup yang Kamu Ikuti
+### 🌐 Dapatkan Metadata Semua Grup yang Kamu Ikuti
 
 ```javascript
 let allGroups = await conn.groupFetchAllParticipating()
 console.log(allGroups)
 ```
 
-### Aktifkan Pesan Sementara di Grup (Ephemeral Message)
+### ⏳ Aktifkan Pesan Sementara di Grup
 
 | Durasi    | Detik (Seconds) |
 |-----------|------------------|
@@ -2525,7 +2530,7 @@ console.log(allGroups)
 await conn.groupToggleEphemeral(jid, 86400) // contoh: aktif 1 hari
 ```
 
-### Ubah Mode Penambahan Anggota Grup
+### 🔐 Ubah Mode Penambahan Anggota Grup
 
 ```javascript
 await conn.groupMemberAddMode(
@@ -2534,74 +2539,72 @@ await conn.groupMemberAddMode(
 )
 ```
 
-## Privasi (Privacy)
+## 🔒 Privasi (Privacy)
 
-### Blokir / Buka Blokir Pengguna
+### 🚫 Blokir / Buka Blokir Pengguna
 
 ```javascript
 await conn.updateBlockStatus(jid, 'block') // Blokir pengguna
 await conn.updateBlockStatus(jid, 'unblock') // Buka blokir pengguna
 ```
 
-### Ambil Pengaturan Privasi
+### 📋 Ambil Pengaturan Privasi
 
 ```javascript
 let privacySettings = await conn.fetchPrivacySettings(true)
 console.log('Pengaturan privasi:', privacySettings)
 ```
 
-### Lihat Daftar Blokir
+### 📵 Lihat Daftar Blokir
 
 ```javascript
 let blocklist = await conn.fetchBlocklist()
 console.log(blocklist)
 ```
 
-### Ubah Privasi Terakhir Dilihat (Last Seen)
+### 👁️‍🗨️ Ubah Privasi Terakhir Dilihat (Last Seen)
 
 ```javascript
 let value = 'all' // bisa juga: 'contacts', 'contact_blacklist', 'none'
 await conn.updateLastSeenPrivacy(value)
 ```
 
-### Ubah Privasi Status Online
+### 🟢 Ubah Privasi Status Online
 
 ```javascript
 let value = 'all' // atau 'match_last_seen'
 await conn.updateOnlinePrivacy(value)
 ```
 
-### Ubah Privasi Foto Profil
+### 🖼️ Ubah Privasi Foto Profil
 
 ```javascript
 let value = 'all' // bisa juga: 'contacts', 'contact_blacklist', 'none'
 await conn.updateProfilePicturePrivacy(value)
 ```
 
-### Ubah Privasi Status WhatsApp
+### 🗯️ Ubah Privasi Status WhatsApp
 
 ```javascript
 let value = 'all' // bisa juga: 'contacts', 'contact_blacklist', 'none'
 await conn.updateStatusPrivacy(value)
 ```
 
-### Ubah Privasi Centang Biru (Read Receipts)
+### ✅ Ubah Privasi Centang Biru (Read Receipts)
 
 ```javascript
 let value = 'all' // atau 'none'
 await conn.updateReadReceiptsPrivacy(value)
 ```
 
-### Ubah Privasi Siapa yang Bisa Menambahkan ke Grup
+### 👥 Ubah Privasi Siapa yang Bisa Menambahkan ke Grup
 
 ```javascript
 let value = 'all' // bisa juga: 'contacts', 'contact_blacklist'
 await conn.updateGroupsAddPrivacy(value)
 ```
 
-### Ubah Mode Default Pesan Sementara
-
-Durasi dalam detik:
+### 🕒 Ubah Mode Default Pesan Sementara
 
 | Durasi    | Detik (Seconds) |
 |-----------|------------------|
@@ -2615,9 +2618,10 @@ let ephemeral = 86400
 await conn.updateDefaultDisappearingMode(ephemeral)
 ```
 
-### NEWSLETTER
+## 📰 NEWSLETTER
 
-- **Mendapatkan informasi newsletter**
+### 📖 Mendapatkan Informasi Newsletter
+
 ```javascript
 const metadata = await conn.newsletterMetadata("invite", "xxxxx")
 // atau
@@ -2625,75 +2629,87 @@ const metadata = await conn.newsletterMetadata("jid", "abcd@newsletter")
 console.log(metadata)
 ```
 
-- **Mengubah deskripsi newsletter**
+### 📝 Mengubah Deskripsi Newsletter
+
 ```javascript
 await conn.newsletterUpdateDescription("abcd@newsletter", "Deskripsi Baru")
 ```
 
-- **Mengubah nama newsletter**
+### ✏️ Mengubah Nama Newsletter
+
 ```javascript
 await conn.newsletterUpdateName("abcd@newsletter", "Nama Baru")
 ```
 
-- **Mengubah foto profil newsletter**
+### 🖼️ Mengubah Foto Profil Newsletter
+
 ```javascript
 await conn.newsletterUpdatePicture("abcd@newsletter", buffer)
 ```
 
-- **Menghapus foto profil newsletter**
+### ❌ Menghapus Foto Profil Newsletter
+
 ```javascript
 await conn.newsletterRemovePicture("abcd@newsletter")
 ```
 
-- **Mematikan notifikasi newsletter**
+### 🔕 Mematikan Notifikasi Newsletter
+
 ```javascript
 await conn.newsletterMute("abcd@newsletter")
 ```
 
-- **Mengaktifkan kembali notifikasi newsletter**
+### 🔔 Mengaktifkan Kembali Notifikasi Newsletter
+
 ```javascript
 await conn.newsletterUnmute("abcd@newsletter")
 ```
 
-- **Membuat newsletter baru**
+### 🆕 Membuat Newsletter Baru
+
 ```javascript
 const metadata = await conn.newsletterCreate("Nama Newsletter", "Deskripsi Newsletter")
 console.log(metadata)
 ```
 
-- **Menghapus newsletter**
+### 🗑️ Menghapus Newsletter
+
 ```javascript
 await conn.newsletterDelete("abcd@newsletter")
 ```
 
-- **Mengikuti newsletter**
+### ➕ Mengikuti Newsletter
+
 ```javascript
 await conn.newsletterFollow("abcd@newsletter")
 ```
 
-- **Berhenti mengikuti newsletter**
+### ➖ Berhenti Mengikuti Newsletter
+
 ```javascript
 await conn.newsletterUnfollow("abcd@newsletter")
 ```
 
-- **Mengirim reaksi ke pesan di newsletter**
+### 💬 Mengirim Reaksi ke Pesan di Newsletter
+
 ```javascript
 const id = "175"
 await conn.newsletterReactMessage("abcd@newsletter", id, "🥳")
 ```
 
-### Ikon AI
+## 🤖 Ikon AI
+
+> Menyisipkan ikon AI pada pesan hanya dengan menambahkan flag `ai: true`.
 
 ```javascript
-// cukup tambahkan "ai: true" pada sendMessage
 await conn.sendMessage(id, { text: "Hello World", ai: true })
 ```
 
-## Broadcast & Status WhatsApp
+## 📣 Broadcast & Status WhatsApp
 
-### Kirim Broadcast dan Status (Stories)
+### 📨 Kirim Broadcast & Status (Stories)
 
-- Kamu bisa kirim pesan ke broadcast & story WhatsApp menggunakan `sendMessage()` seperti biasa, tapi dengan tambahan properti khusus:
+> Mengirim pesan ke broadcast dan status bisa dilakukan seperti biasa dengan `sendMessage()`, namun dengan beberapa properti tambahan.
 
 ```javascript
 await conn.sendMessage(
@@ -2705,109 +2721,168 @@ await conn.sendMessage(
     caption: 'Halo dari broadcast!'
   },
   {
-    backgroundColor: '#ffffff', // opsional
-    font: 'default', // opsional
-    statusJidList: ['628xxx@s.whatsapp.net'], // daftar kontak yang akan terima status
+    backgroundColor: '#ffffff', // opsional (untuk status)
+    font: 'default', // opsional (untuk status)
+    statusJidList: ['628xxx@s.whatsapp.net'], // daftar penerima status (WA Story)
     broadcast: true // aktifkan mode broadcast
   }
 )
 ```
 
-- Konten pesan bisa berupa `extendedTextMessage`, `imageMessage`, `videoMessage`, atau `voiceMessage`.  
-  [Lihat semua tipe konten pesan di sini](https://baileys.whiskeyconnets.io/types/AnyRegularMessageContent.html)
+> Konten pesan dapat berupa:  
+> `extendedTextMessage`, `imageMessage`, `videoMessage`, `voiceMessage`, dll.
 
-- Kamu juga bisa menggunakan `backgroundColor`, `font`, dan pengaturan lainnya pada opsi pengiriman.  
-  [Lihat semua opsi di sini](https://baileys.whiskeyconnets.io/types/MiscMessageGenerationOptions.html)
+🔗 [Lihat semua tipe konten pesan](https://baileys.whiskeyconnets.io/types/AnyRegularMessageContent.html)  
+🔧 [Lihat semua opsi kirim pesan](https://baileys.whiskeyconnets.io/types/MiscMessageGenerationOptions.html)
 
-- ID broadcast biasanya berbentuk: `12345678@broadcast`
+🆔 Format ID broadcast: `12345678@broadcast`
 
-### Ambil Info Daftar Broadcast
+### 🔍 Ambil Info Daftar Broadcast
 
 ```javascript
 let bList = await conn.getBroadcastListInfo('1234@broadcast')
 console.log(`Nama list: ${bList.name}, Penerima: ${bList.recipients}`)
 ```
 
-## Menulis Fungsionalitas Kustom (Custom Functionality)
+## 🛠️ Menulis Fungsionalitas Kustom (Custom Functionality)
 
-Baileys dirancang untuk **ekstensi & kustomisasi**. Kamu tidak perlu fork repo untuk modifikasi — cukup tulis kode kamu sendiri dan panggil lewat API yang disediakan.
+Baileys dirancang dengan arsitektur fleksibel dan dapat diperluas.  
+Kamu **tidak perlu memodifikasi core** untuk membuat fitur baru — cukup tulis kode kamu dan gunakan API public yang tersedia.
 
-### Mengaktifkan Log Debug WhatsApp
+Contoh:
+```javascript
+function kirimNotifikasiKeGrupSemua(grupList, pesan) {
+  for (const jid of grupList) {
+    conn.sendMessage(jid, { text: pesan })
+  }
+}
+```
 
-- Untuk melihat semua pesan mentah dari WhatsApp, aktifkan logger debug saat inisialisasi soket:
+> 💡 Tips:
+> Gunakan event `conn.ev.on()` untuk menangkap semua event penting seperti `messages.upsert`, `contacts.update`, `group-participants.update`, dll.
+
+## 🐞 Mengaktifkan Log Debug WhatsApp
+
+### 🔧 Cara Aktifkan Log `debug`
+
+Untuk melihat log mentah dari WebSocket WhatsApp, kamu bisa aktifkan logger saat inisialisasi koneksi:
 
 ```javascript
 import P from 'pino'
 
 const conn = makeWAconnet({
-  logger: P({ level: 'debug' })
+  logger: P({ level: 'debug' }) // aktifkan level debug
 })
 ```
 
-> Ini sangat berguna kalau kamu ingin memahami **bagaimana WhatsApp bekerja di balik layar** atau mau buat fitur-fitur advance yang gak didokumentasikan.
+> ⚠️ **Peringatan:**  
+> Output `debug` sangat banyak! Gunakan hanya saat perlu troubleshooting atau eksplorasi fitur tersembunyi.
 
-## Bagaimana WhatsApp Berkomunikasi Dengan Kita
+## 📡 Bagaimana WhatsApp Berkomunikasi Dengan Kita
 
-> **TIP:**  
-> Kalau kamu ingin mempelajari protokol komunikasi WhatsApp, disarankan untuk memahami tentang **LibSignal Protocol** dan **Noise Protocol**.
+> 💡 WhatsApp menggunakan enkripsi E2E yang kompleks. Untuk mengerti alurnya, kamu harus pelajari:  
+> - [LibSignal Protocol](https://signal.org/docs/)  
+> - [Noise Protocol](https://noiseprotocol.org/)  
+> - Serialisasi berbasis protobuf dan format `WAMessage`.
 
-### Contoh Kasus
+### 📊 Contoh Kasus: Tracking Baterai Perangkat
 
-Misalnya, kamu ingin melacak **persentase baterai** dari HP yang terhubung.  
-Kalau kamu mengaktifkan log `debug`, maka akan muncul pesan seperti ini di terminal:
+Kalau kamu sudah mengaktifkan log `debug`, maka kamu akan bisa melihat traffic internal seperti ini:
 
-```
+```json
 {
-    "level": 10,
-    "fromMe": false,
-    "frame": {
-        "tag": "ib",
-        "attrs": {
-            "from": "@s.whatsapp.net"
-        },
-        "content": [
-            {
-                "tag": "edge_routing",
-                "attrs": {},
-                "content": [
-                    {
-                        "tag": "routing_info",
-                        "attrs": {},
-                        "content": {
-                            "type": "Buffer",
-                            "data": [8,2,8,5]
-                        }
-                    }
-                ]
-            }
-        ]
+  "level": 10,
+  "fromMe": false,
+  "frame": {
+    "tag": "ib",
+    "attrs": {
+      "from": "@s.whatsapp.net"
     },
-    "msg": "communication"
+    "content": [
+      {
+        "tag": "edge_routing",
+        "attrs": {},
+        "content": [
+          {
+            "tag": "routing_info",
+            "attrs": {},
+            "content": {
+              "type": "Buffer",
+              "data": [8, 2, 8, 5]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "msg": "communication"
 }
 ```
 
-### Penjelasan Struktur `frame`
+- Biasanya pesan-pesan `tag: ib` adalah **internal beacon** dari perangkat atau server.
+- Kamu bisa meng-capture dan **parse buffer `data[]`** untuk melihat apakah itu info baterai, sinyal, perangkat, dll.
 
-Setiap pesan dari WhatsApp memiliki struktur `frame` dengan komponen utama berikut:
+### 🧩 Struktur `frame` pada Pesan WhatsApp
 
-- `tag` — menandakan tipe pesan (contoh: `'message'`)
-- `attrs` — objek berisi key-value untuk metadata (biasanya mengandung ID pesan)
-- `content` — data utama dari isi pesan (contoh: isi teks dari pesan)
+Setiap pesan yang dikirim atau diterima via WebSocket WhatsApp menggunakan **struktur frame** yang terdiri dari tiga bagian utama:
 
-> Untuk dokumentasi lebih lanjut, lihat [struktur WABinary](/src/WABinary/readme.md)
+| Komponen | Deskripsi |
+|----------|-----------|
+| `tag` | Menandakan jenis isi atau tujuan dari pesan, misal: `'message'`, `'iq'`, `'presence'`, `'call'`, `'receipt'` |
+| `attrs` | Objek berisi pasangan key-value (atribut metadata) seperti ID, waktu, device, atau session info |
+| `content` | Isi utama dari pesan, bisa berupa array node lain, buffer, atau objek data |
 
-### Daftarkan Callback Untuk Event Webconnet
+### ⚙️ Menangani Event `webconnet` / Low-Level CB Handler
 
-> **TIP:**  
-> Lihat fungsi `onMessageReceived` di file `connet.ts` untuk memahami cara event webconnet diproses.
+Jika kamu ingin **intersep pesan mentah** dari WebSocket, gunakan callback `conn.ws.on()`:
 
 ```javascript
-// untuk semua pesan dengan tag 'edge_routing'
-conn.ws.on('CB:edge_routing', (node) => { })
+// semua pesan dengan tag 'edge_routing'
+conn.ws.on('CB:edge_routing', (node) => {
+  console.log(node)
+})
 
-// untuk pesan dengan tag 'edge_routing' dan atribut id = abcd
-conn.ws.on('CB:edge_routing,id:abcd', (node) => { })
+// pesan dengan tag 'edge_routing' & id = abcd
+conn.ws.on('CB:edge_routing,id:abcd', (node) => {
+  console.log('Filter ID = abcd:', node)
+})
 
-// untuk pesan dengan tag 'edge_routing', id = abcd & isi pertama adalah 'routing_info'
-conn.ws.on('CB:edge_routing,id:abcd,routing_info', (node) => { })
+// pesan dengan tag 'edge_routing', id = abcd, dan isi node pertama adalah 'routing_info'
+conn.ws.on('CB:edge_routing,id:abcd,routing_info', (node) => {
+  console.log('Match isi routing_info:', node)
+})
 ```
+
+> 🧠 Semua tag, atribut, dan isi `node` dikirim dalam format **WABinaryNode**.  
+> Format node bisa kamu deskripsikan lewat `util.inspect(node, false, null, true)` kalau mau log dengan warna.
+
+### 📡 Contoh Penggunaan Lanjutan
+
+Misal kamu ingin memantau perubahan jaringan, edge routing, atau sinkronisasi status:
+
+```javascript
+conn.ws.on('CB:edge_routing', ({ tag, attrs, content }) => {
+  if (content?.[0]?.tag === 'routing_info') {
+    console.log('Routing Info Diterima:', content[0])
+  }
+})
+```
+
+Ini bisa berguna buat fitur:
+- Status baterai perangkat
+- Koneksi multi-device
+- Debug distribusi trafik dan socket fallback
+
+## 🌸 Arigatou ne~!
+
+Kamu udah sampai di akhir dokumentasi~  
+Semoga semua fitur dan fungsi yang kamu baca bisa bermanfaat buat project-mu~  
+Kalau masih ada yang bikin bingung, langsung aja gabung ke grup WhatsApp buat tanya-tanya~ 🫶🏻✨
+
+> 📖 Dokumentasi ini disusun karena gabut, semangat ngoding, dan jangan lupa makan 🍓
+
+**💌 Kontak & Bantuan:**  
+🧠 [GitHub](github.com/naruyaizumi)
+📱 [Gabung grup WA](https://chat.whatsapp.com/J9DANHhVooxDslMY6Emjhi)
+
+✨ Powered by: `Baileys` 🦄
