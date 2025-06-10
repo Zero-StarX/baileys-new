@@ -1,5 +1,5 @@
 {
-  "name": "naruyaizumi",
+  "name": "baileys-new",
   "version": "26.0.2",
   "description": "baileys whatsapp-api",
   "keywords": [
@@ -7,12 +7,12 @@
     "whatsapp",
     "baileys"
   ],
-  "homepage": "https://github.com/naruyaizumi/baileys",
+  "homepage": "https://github.com/Zero-StarX/baileys-new",
   "repository": {
-    "url": "https://github.com/naruyaizumi/baileys"
+    "url": "https://github.com/Zero-StarX/baileys"
   },
   "license": "MIT",
-  "author": "Naruya Izumi",
+  "author": "Zero StarX",
   "main": "lib/index.js",
   "files": [
     "lib/*",
@@ -43,6 +43,22 @@
     "sharp": "^0.34.2",
     "ws": "^8.18.2"
   },
+  "peerDependencies": {
+    "jimp": "^1.6.0",
+    "qrcode-terminal": "^0.12.0",
+    "sharp": "^0.34.2"
+  },
+  "peerDependenciesMeta": {
+    "jimp": {
+      "optional": true
+    },
+    "qrcode-terminal": {
+      "optional": true
+    },
+    "sharp": {
+      "optional": true
+    }
+  },
   "packageManager": "",
   "engines": {
     "node": ">=20.0.0"
@@ -51,6 +67,6 @@
     "lib": "lib"
   },
   "bugs": {
-    "url": "https://github.com/naruyaizumi/baileys/issues"
+    "url": "https://github.com/Zero-StarX/baileys/issues"
   }
 }
