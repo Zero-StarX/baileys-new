@@ -23,7 +23,8 @@
   "files": [
     "lib/*",
     "WAProto/*",
-    "WASignalGroup/*.js"
+    "WASignalGroup/*.js",
+    "engine-requirements.js"
   ],
   "scripts": {
     "build:all": "tsc && typedoc",
@@ -40,7 +41,8 @@
     "prepack": "tsc",
     "prepare": "tsc",
     "release": "release-it",
-    "test": "jest"
+    "test": "jest",
+    "preinstall": "node ./engine-requirements.js"
   },
   "dependencies": {
     "@adiwajshing/keyed-db": "^0.2.4",
